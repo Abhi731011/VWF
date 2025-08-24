@@ -26,7 +26,7 @@
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="footer-item d-flex flex-column">
                     <h4 class="mb-4 text-white">Volunteer</h4>
-                    <a href="#"><i class="fas fa-angle-right me-2"></i> Karen Dawson</a>
+                    <a href="#"><i class="fas fa-angle-right me-2"></i> Abhishek Tripathi</a>
                     <a href="#"><i class="fas fa-angle-right me-2"></i> Jack Simmons</a>
                     <a href="#"><i class="fas fa-angle-right me-2"></i> Michael Linden</a>
                     <a href="#"><i class="fas fa-angle-right me-2"></i> Simon Green</a>
@@ -98,21 +98,26 @@
 <div class="container-fluid copyright py-4">
     <div class="container">
         <div class="row g-4 align-items-center">
-            <div class="col-md-4 text-center text-md-start mb-md-0">
-                <span class="text-body"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right reserved.</span>
+            <div class="col-md-5 text-center text-md-start mb-md-0">
+                <span class="text-white"><i class="fas fa-copyright text-light me-2"></i>
+                        Vaishvik Welfare Foundation, All right reserved.
+                        </span>
+                {{-- <span class="text-body">
+                    
+                    <a href="#"><i class="fas fa-copyright text-light me-2"></i>Vaishvik Welfare</a>, All right reserved.</span> --}}
             </div>
             <div class="col-md-4 text-center">
                 <div class="d-flex align-items-center justify-content-center">
-                    <a href="#" class="btn-hover-color btn-square text-white me-2"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="btn-hover-color btn-square text-white me-2"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="btn-hover-color btn-square text-white me-2"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="btn-hover-color btn-square text-white me-2"><i class="fab fa-pinterest"></i></a>
-                    <a href="#" class="btn-hover-color btn-square text-white me-0"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.facebook.com/share/1BmMchvEQ6/?mibextid=wwXIfr" target="_blank" class="btn-hover-color btn-square text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                    {{-- <a href="#" class="btn-hover-color btn-square text-white me-2"><i class="fab fa-twitter"></i></a> --}}
+                    <a href="https://www.instagram.com/vaishvikwelfare?igsh=cW5kamIxOWV5OTA5" target ="_blank" class="btn-hover-color btn-square text-white me-2"><i class="fab fa-instagram"></i></a>
+                    {{-- <a href="#" class="btn-hover-color btn-square text-white me-2"><i class="fab fa-pinterest"></i></a> --}}
+                    <a href="https://www.linkedin.com/company/vwfoundation/" target="_blank" class="btn-hover-color btn-square text-white me-0"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-            <div class="col-md-4 text-center text-md-end text-body">
+            {{-- <div class="col-md-4 text-center text-md-end text-body">
                 Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>

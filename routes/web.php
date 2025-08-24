@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\landing\LandingController;
 
 Route::get('/', function () {
     return view('landing.main');
@@ -38,7 +39,7 @@ Route::get('/volunteer', function () {
 })->name('volunteer');
 
 Route::get('/contact', function () {
-    return view('landing.main');
+    return view('landing.contact.contact');
 })->name('contact');
 
 Route::get('/dashboard', function () {
@@ -50,6 +51,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+    Route::get('/contact', [LandingController::class, 'contact'])->name('contact');
+
+
+
+
 //Admin
 Route::get('/admin', function () {
     return view('admin.dashboard');

@@ -21,8 +21,8 @@
                 <div class="carousel-caption">
                     <div class="p-3" style="max-width: 900px;">
                         <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">WE'll Save Our Planet</h4>
-                        <h1 class="display-1 text-capitalize text-white mb-4">Protect Environment</h1>
-                        <p class="mb-5 fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                        <h1 class="display-1 text-capitalize text-white mb-4">Serving Humanity, Nature & Animals Alike</h1>
+                        <p class="mb-5 fs-5">India’s first integrated welfare movement nurturing life in all its forms
                         </p>
                         <div class="d-flex align-items-center justify-content-center">
                             <a class="btn-hover-bg btn btn-primary text-white py-3 px-5" href="#">Join With Us</a>
@@ -35,8 +35,8 @@
                 <div class="carousel-caption">
                     <div class="p-3" style="max-width: 900px;">
                         <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">WE'll Save Our Planet</h4>
-                        <h1 class="display-1 text-capitalize text-white mb-4">Protect Environment</h1>
-                        <p class="mb-5 fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                        <h1 class="display-1 text-capitalize text-white mb-4">Serving Humanity, Nature & Animals Alike</h1>
+                        <p class="mb-5 fs-5">India’s first integrated welfare movement nurturing life in all its forms
                         </p>
                         <div class="d-flex align-items-center justify-content-center">
                             <a class="btn-hover-bg btn btn-primary text-white py-3 px-5" href="#">Join With Us</a>
@@ -49,8 +49,8 @@
                 <div class="carousel-caption">
                     <div class="p-3" style="max-width: 900px;">
                         <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">WE'll Save Our Planet</h4>
-                        <h1 class="display-1 text-capitalize text-white mb-4">Protect Environment</h1>
-                        <p class="mb-5 fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                        <h1 class="display-1 text-capitalize text-white mb-4">Serving Humanity, Nature & Animals Alike</h1>
+                        <p class="mb-5 fs-5">India’s first integrated welfare movement nurturing life in all its forms
                         </p>
                         <div class="d-flex align-items-center justify-content-center">
                             <a class="btn-hover-bg btn btn-primary text-white py-3 px-5" href="#">Join With Us</a>
@@ -82,8 +82,8 @@
             </div>
             <div class="col-xl-7">
                 <h5 class="text-uppercase text-primary">About Us</h5>
-                <h1 class="mb-4">Our main goal is to protect environment</h1>
-                <p class="fs-5 mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
+                <h1 class="mb-4">Serving the world Alike</h1>
+                <p class="fs-5 mb-4">At Vaishvik Welfare Foundation, we believe that humans, animals, and nature are deeply connected — and so should be our approach to welfare. While most NGOs work in silos, focusing on just one issue, we’re bridging those gaps to create a holistic, sustainable future for all.
                 </p>
                 <div class="tab-class bg-secondary p-4">
                     <ul class="nav d-flex mb-2">
@@ -109,8 +109,8 @@
                                 <div class="col-12">
                                     <div class="d-flex">
                                         <div class="text-start my-auto">
-                                            <h5 class="text-uppercase mb-3">Lorem Ipsum 1</h5>
-                                            <p class="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
+                                            {{-- <h5 class="text-uppercase mb-3">Lorem Ipsum 1</h5> --}}
+                                            <p class="mb-4">At Vaishvik Welfare Foundation, we believe that humans, animals, and nature are deeply connected — and so should be our approach to welfare. While most NGOs work in silos, focusing on just one issue, we’re bridging those gaps to create a holistic, sustainable future for all.
                                             </p>
                                             <div class="d-flex align-items-center justify-content-start">
                                                 <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Read More</a>
@@ -125,8 +125,8 @@
                                 <div class="col-12">
                                     <div class="d-flex">
                                         <div class="text-start my-auto">
-                                            <h5 class="text-uppercase mb-3">Lorem Ipsum 2</h5>
-                                            <p class="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
+                                            {{-- <h5 class="text-uppercase mb-3">Lorem Ipsum 2</h5> --}}
+                                            <p class="mb-4">Vaishvik Welfare Foundation pioneers integrated welfare — serving rural communities, conserving nature, and uplifting animals through compassionate service, ecological innovation, and inclusive development. With a special focus on cow protection, we blend traditional values with modern solutions to build resilient, conscious societies.
                                             </p>
                                             <div class="d-flex align-items-center justify-content-start">
                                                 <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Read More</a>
@@ -141,8 +141,8 @@
                                 <div class="col-12">
                                     <div class="d-flex">
                                         <div class="text-start my-auto">
-                                            <h5 class="text-uppercase mb-3">Lorem Ipsum 3</h5>
-                                            <p class="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
+                                            {{-- <h5 class="text-uppercase mb-3">Lorem Ipsum 3</h5> --}}
+                                            <p class="mb-4">To lead a new era of social transformation where rural communities thrive, animals are protected with dignity, and nature is preserved — all through compassion-driven action and sustainable innovation.
                                             </p>
                                             <div class="d-flex align-items-center justify-content-start">
                                                 <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Read More</a>
@@ -172,41 +172,49 @@
                 <div class="service-item">
                     <img src="{{ asset('assetslanding/img/service-1.jpg') }}" class="img-fluid w-100" alt="Image">
                     <div class="service-link">
-                        <a href="#" class="h4 mb-0">Raising money to help</a>
+                        <a href="#" class="h4 mb-0">Education & Digital Literacy</a>
                     </div>
                 </div>
-                <p class="my-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                <p class="my-4">Education & Digital Literacy – so every child can dream freely and every youth can step into the future with confidence
                 </p>
             </div>
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="service-item">
                     <img src="{{ asset('assetslanding/img/service-2.jpg') }}" class="img-fluid w-100" alt="Image">
                     <div class="service-link">
-                        <a href="#" class="h4 mb-0"> close work with services</a>
+                        <a href="#" class="h4 mb-0"> Women & Youth Empowerment</a>
                     </div>
                 </div>
-                <p class="my-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                </p>
+                <p class="my-4">Women & Youth Empowerment – because true progress begins when voices that were once silenced rise strong and independent.
             </div>
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="service-item">
                     <img src="{{ asset('assetslanding/img/service-3.jpg') }}" class="img-fluid w-100" alt="Image">
                     <div class="service-link">
-                        <a href="#" class="h4 mb-0">Pro Guided tours only</a>
+                        <a href="#" class="h4 mb-0">Health & Sanitation</a>
+                    </div>
+                </div>
+                <p class="my-4">Health & Sanitation – ensuring that health and dignity are not privileges, but basic rights for all.
+                </p>
+            </div>
+            {{-- <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="service-item">
+                    <img src="{{ asset('assetslanding/img/service-4.jpg') }}" class="img-fluid w-100" alt="Image">
+                    <div class="service-link">
+                        <a href="#" class="h4 mb-0">Livelihood & Environment</a>
                     </div>
                 </div>
                 <p class="my-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
                 </p>
-            </div>
+            </div> --}}
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="service-item">
                     <img src="{{ asset('assetslanding/img/service-4.jpg') }}" class="img-fluid w-100" alt="Image">
                     <div class="service-link">
-                        <a href="#" class="h4 mb-0">Protecting animal area</a>
+                        <a href="#" class="h4 mb-0">Animal Welfare (especially for cows)</a>
                     </div>
                 </div>
-                <p class="my-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                </p>
+                <p class="my-4">Animal Welfare (especially for cows) – nurturing beings who cannot speak for themselves but deserve every ounce of love and care.</p>
             </div>
             <div class="col-12">
                 <div class="d-flex align-items-center justify-content-center">
@@ -283,36 +291,37 @@
     <div class="container py-5">
         <div class="text-center mx-auto pb-5" style="max-width: 800px;">
             <h5 class="text-uppercase text-primary">Achievements</h5>
-            <p class="text-white mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+            <p class="text-white mb-0">At Vaishvik Welfare Foundation, we believe that behind every number lies a heartbeat, a smile, and a story of change. What may look like statistics to many are, for us, moments of compassion turned into action. Together with our volunteers, donors, and well-wishers, we are weaving a world where people, animals, and nature live in harmony.
             </p>
         </div>
         <div class="row g-4">
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="counter-item text-center border p-5">
-                    <i class="fas fa-thumbs-up fa-4x text-white"></i>
-                    <h3 class="text-white my-4">Beavers Saved</h3>
+                    <i class="fas fa-user-graduate fa-4x text-white"></i>
+
+                    <h3 class="text-white my-4">Children Educated</h3>
                     <div class="counter-counting">
-                        <span class="text-primary fs-2 fw-bold" data-toggle="counter-up">3600</span>
+                        <span class="text-primary fs-2 fw-bold" data-toggle="counter-up">1500</span>
                         <span class="h1 fw-bold text-primary">+</span>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="counter-item text-center border p-5">
-                    <i class="fas fa-file-invoice-dollar fa-4x text-white"></i>
-                    <h3 class="text-white my-4">Funds Collected</h3>
+<i class="fas fa-tree fa-4x text-white"></i>
+                    <h3 class="text-white my-4">Trees Planted</h3>
                     <div class="counter-counting text-center border-white w-100" style="border-style: dotted; font-size: 30px;">
-                        <span class="text-primary fs-2 fw-bold" data-toggle="counter-up">513</span>
-                        <span class="h1 fw-bold text-primary">$</span>
+                        <span class="text-primary fs-2 fw-bold" data-toggle="counter-up">500</span>
+                        <span class="h1 fw-bold text-primary">+</span>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="counter-item text-center border p-5">
                     <i class="fas fa-user fa-4x text-white"></i>
-                    <h3 class="text-white my-4">Volunteer</h3>
+                    <h3 class="text-white my-4">Volunteers Engaged</h3>
                     <div class="counter-counting text-center border-white w-100" style="border-style: dotted; font-size: 30px;">
-                        <span class="text-primary fs-2 fw-bold" data-toggle="counter-up">713</span>
+                        <span class="text-primary fs-2 fw-bold" data-toggle="counter-up">900</span>
                         <span class="h1 fw-bold text-primary">+</span>
                     </div>
                 </div>
@@ -320,9 +329,9 @@
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="counter-item text-center border p-5">
                     <i class="fas fa-heart fa-4x text-white"></i>
-                    <h3 class="text-white my-4">Days of Help</h3>
+                    <h3 class="text-white my-4">Health Beneficiaries</h3>
                     <div class="counter-counting text-center border-white w-100" style="border-style: dotted; font-size: 30px;">
-                        <span class="text-primary fs-2 fw-bold" data-toggle="counter-up">487</span>
+                        <span class="text-primary fs-2 fw-bold" data-toggle="counter-up">500</span>
                         <span class="h1 fw-bold text-primary">+</span>
                     </div>
                 </div>

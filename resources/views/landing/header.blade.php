@@ -5,24 +5,24 @@
             <div class="row align-items-center justify-content-center">
                 <div class="col-md-8">
                     <div class="topbar-info d-flex flex-wrap">
-                        <a href="#" class="text-light me-4"><i class="fas fa-envelope text-white me-2"></i>Example@gmail.com</a>
-                        <a href="#" class="text-light"><i class="fas fa-phone-alt text-white me-2"></i>+01234567890</a>
+                        <a href="#" class="text-light me-4"><i class="fas fa-envelope text-white me-2"></i>info@vaishvikwelfare.org</a>
+                        <a href="#" class="text-light"><i class="fas fa-phone-alt text-white me-2"></i>+91 7860333385</a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="topbar-icon d-flex align-items-center justify-content-end">
-                        <a href="#" class="btn-square text-white me-2"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="btn-square text-white me-2"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="btn-square text-white me-2"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="btn-square text-white me-2"><i class="fab fa-pinterest"></i></a>
-                        <a href="#" class="btn-square text-white me-0"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/share/1BmMchvEQ6/?mibextid=wwXIfr" target="_blank" class="btn-square text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                        {{-- <a href="#" class="btn-square text-white me-2"><i class="fab fa-twitter"></i></a> --}}
+                        <a href="https://www.instagram.com/vaishvikwelfare?igsh=cW5kamIxOWV5OTA5" target="_blank" class="btn-square text-white me-2"><i class="fab fa-instagram"></i></a>
+                        {{-- <a href="#" class="btn-square text-white me-2"><i class="fab fa-pinterest"></i></a> --}}
+                        <a href="https://www.linkedin.com/company/vwfoundation/" target="_blank" class="btn-square text-white me-0"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
         </div>
         <nav class="navbar navbar-light bg-light navbar-expand-xl">
            <a href="{{ route('index') }}" class="navbar-brand ms-3">
-    <img src="{{ asset('assetslanding/img/logo.png') }}" alt="Vaisvik" class="img-fluid" style="height: 80px;">
+    <img src="{{ asset('assetslanding/img/logo.png') }}" alt="Vaisvik" class="img-fluid" style="height: 70px;">
 </a>
             <button class="navbar-toggler py-2 px-3 me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars text-primary"></span>
