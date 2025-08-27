@@ -28,22 +28,77 @@
                             <p class="mb-4">Every message we receive carries a spark of hope. At Vaishvik Welfare Foundation, we see it as another heartbeat joining our mission of compassion. Whether you wish to volunteer, support, or simply share your thoughts, we’d love to hear from you. Together, let’s create a kinder world.
                                  {{-- <a class="text-dark fw-bold" href="https://htmlcodex.com/contact-form">Download Now</a> --}}
                                 </p>
-                            <form>
+                            <!-- Success/Error Messages -->
+                            @if(session('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            @endif
+
+                            @if(session('error'))
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ session('error') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            @endif
+
+                            <form action="{{ route('contact.store') }}" method="POST">
+                                @csrf
                                 <div class="row gx-4 gy-3">
                                     <div class="col-xl-6">
-                                        <input type="text" class="form-control bg-white border-0 py-3 px-4" placeholder="Your First Name">
+                                        <input type="text"
+                                               name="first_name"
+                                               class="form-control bg-white border-0 py-3 px-4 @error('first_name') is-invalid @enderror"
+                                               placeholder="Your Full Name"
+                                               value="{{ old('first_name') }}"
+                                               required>
+                                        @error('first_name')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="col-xl-6">
-                                        <input type="email" class="form-control bg-white border-0 py-3 px-4" placeholder="Your Email">
+                                        <input type="email"
+                                               name="email"
+                                               class="form-control bg-white border-0 py-3 px-4 @error('email') is-invalid @enderror"
+                                               placeholder="Your Email"
+                                               value="{{ old('email') }}"
+                                               required>
+                                        @error('email')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="col-xl-6">
-                                        <input type="text" class="form-control bg-white border-0 py-3 px-4" placeholder="Your Phone">
+                                        <input type="text"
+                                               name="phone"
+                                               class="form-control bg-white border-0 py-3 px-4 @error('phone') is-invalid @enderror"
+                                               placeholder="Your Phone"
+                                               value="{{ old('phone') }}">
+                                        @error('phone')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="col-xl-6">
-                                        <input type="text" class="form-control bg-white border-0 py-3 px-4" placeholder="Subject">
+                                        <input type="text"
+                                               name="subject"
+                                               class="form-control bg-white border-0 py-3 px-4 @error('subject') is-invalid @enderror"
+                                               placeholder="Subject"
+                                               value="{{ old('subject') }}"
+                                               required>
+                                        @error('subject')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="col-12">
-                                        <textarea class="form-control bg-white border-0 py-3 px-4" rows="7" cols="10" placeholder="Your Message"></textarea>
+                                        <textarea name="message"
+                                                  class="form-control bg-white border-0 py-3 px-4 @error('message') is-invalid @enderror"
+                                                  rows="7"
+                                                  cols="10"
+                                                  placeholder="Your Message"
+                                                  required>{{ old('message') }}</textarea>
+                                        @error('message')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="col-12">
                                         <button class="btn-hover-bg btn btn-primary w-100 py-3 px-5" type="submit">Submit</button>

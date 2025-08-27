@@ -15,4 +15,12 @@ class LandingController extends Controller
     {
         return view('landing.contact.contact');
     }
+    public function about()
+    {
+        return view('landing.about.index');
+    }
+    public function services()
+    {
+        return view('landing.services.index');
+    }
 }
