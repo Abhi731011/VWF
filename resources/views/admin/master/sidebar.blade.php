@@ -1,9 +1,11 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="#"> 
-                <img alt="image" src="{{ asset('assets/img/logo.png') }}" class="header-logo" /> 
-                <span class="logo-name">Otika</span>
+            <a href="{{ route('dashboard') }}"> 
+<img alt="image" src="{{ asset('assets/img/Logowithname.png') }}" 
+     class="header-logo" 
+     style="height:100px; width:auto;" />
+                {{-- <span class="logo-name">VWF</span> --}}
             </a>
         </div>
         <ul class="sidebar-menu">
@@ -12,10 +14,9 @@
                 <a href="#" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
             <li class="dropdown">
-                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="briefcase"></i><span>Widgets</span></a>
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="briefcase"></i><span>Contact Us</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="#">Chart Widgets</a></li>
-                    <li><a class="nav-link" href="#">Data Widgets</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.contact.index') }}">Listings</a></li>
                 </ul>
             </li>
             <li class="dropdown">

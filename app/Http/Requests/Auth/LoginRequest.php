@@ -41,11 +41,22 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
+        // First ensure credentials are valid
         if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
                 'email' => trans('auth.failed'),
+            ]);
+        }
+
+        // Ensure only admin users (admin_id = 1) may log in
+        $authenticatedUser = Auth::user();
+        if (! $authenticatedUser || (int) ($authenticatedUser->admin_id ?? 0) !== 1) {
+            Auth::logout();
+            RateLimiter::hit($this->throttleKey());
+            throw ValidationException::withMessages([
+                'email' => __('Unauthorized login.'),
             ]);
         }
 
