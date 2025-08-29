@@ -20,12 +20,12 @@
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>Apps</span></a>
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>Projects</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="#">Chat</a></li>
-                    <li><a class="nav-link" href="#">Portfolio</a></li>
+                    <li><a class="nav-link" href="{{ route('projects.index') }}">Add Project</a></li>
+                    {{-- <li><a class="nav-link" href="#">Portfolio</a></li>
                     <li><a class="nav-link" href="#">Blog</a></li>
-                    <li><a class="nav-link" href="#">Calendar</a></li>
+                    <li><a class="nav-link" href="#">Calendar</a></li> --}}
                 </ul>
             </li>
             <li class="dropdown">
