@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\AdminContactController;
+use App\Http\Controllers\Admin\PackageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\landing\LandingController;
@@ -76,6 +77,15 @@ Route::get('/admin', function () {return view('admin.dashboard');})->name('dashb
     Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
     Route::put('/projects/{project}', [ProjectController::class, 'update'])->name('projects.update');
     Route::delete('/projects/{project}', [ProjectController::class, 'destroy'])->name('projects.destroy');
+
+    // Admin Package Management Routes
+    Route::get('/packages', [PackageController::class, 'index'])->name('packages.index');
+    Route::get('/packages/create', [PackageController::class, 'create'])->name('packages.create');
+    Route::post('/packages', [PackageController::class, 'store'])->name('packages.store');
+    Route::get('/packages/{package}', [PackageController::class, 'show'])->name('packages.show');
+    Route::get('/packages/{package}/edit', [PackageController::class, 'edit'])->name('packages.edit');
+    Route::put('/packages/{package}', [PackageController::class, 'update'])->name('packages.update');
+    Route::delete('/packages/{package}', [PackageController::class, 'destroy'])->name('packages.destroy');
 
 
 });

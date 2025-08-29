@@ -29,13 +29,21 @@
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="mail"></i><span>Email</span></a>
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="package"></i><span>Packages</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="#">Inbox</a></li>
+                                        <li><a class="nav-link" href="{{ route('packages.create') }}">Add Package</a></li>
+
+                    <li><a class="nav-link" href="{{ route('packages.index') }}">Manage Packages</a></li>
+                </ul>
+            </li>
+            {{-- <li class="dropdown">
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="mail"></i><span>Package</span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="#">Packages</a></li>
                     <li><a class="nav-link" href="#">Compose</a></li>
                     <li><a class="nav-link" href="#">Read</a></li>
                 </ul>
-            </li>
+            </li> --}}
             <li class="menu-header">UI Elements</li>
             <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="copy"></i><span>Basic Components</span></a>
