@@ -60,6 +60,7 @@
                             <table class="table table-hover table-center mb-0" id="contacts-table">
                                 <thead>
                                     <tr>
+                                        <th>S.No</th>
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Phone</th>
@@ -70,6 +71,7 @@
                                 <tbody>
                                     @foreach ($contacts as $contact)
                                     <tr class="contact-row">
+                                        <td>{{ $loop->iteration }}</td>
                                         <td class="first-name">{{ $contact->first_name }}</td>
                                         <td class="email">{{ $contact->email }}</td>
                                         <td class="phone">{{ $contact->phone }}</td>

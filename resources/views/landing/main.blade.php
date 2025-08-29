@@ -245,7 +245,7 @@
                 </div>
                 <div class="col-12">
                     <div class="d-flex align-items-center justify-content-center">
-                        <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Read More</a>
+                        <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="{{route('services')}}">Read More</a>
                     </div>
                 </div>
             </div>
@@ -254,7 +254,7 @@
     <!-- Services End -->
 
     <!-- Donation Start -->
-    <div class="container-fluid donation py-5">
+    <!-- <div class="container-fluid donation py-5">
         <div class="container py-5">
             <div class="text-center mx-auto pb-5" style="max-width: 800px;">
                 <h5 class="text-uppercase text-primary">Donation</h5>
@@ -315,7 +315,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Donation End -->
 
     <!-- Counter Start -->
@@ -395,7 +395,7 @@
     <div class="col-md-6 col-lg-6 col-xl-3 d-flex">
         <div class="counter-item text-center border p-5 h-100 w-100">
             <i class="fas fa-tree fa-4x text-white"></i>
-            <h3 class="text-white my-4">Trees Planted</h3>
+            <h3 class="text-white my-4"> Totals Trees Planted</h3>
             <div class="counter-counting text-center border-white w-100"
                 style="border-style: dotted; font-size: 30px;">
                 <span class="text-primary fs-2 fw-bold" data-toggle="counter-up">500</span>
@@ -455,19 +455,19 @@
                             <div class="causes-link pb-2 px-3">
                                 <small class="text-white"><i class="fas fa-chart-bar text-primary me-2"></i>Goal:
                                     $3600</small>
-                                <small class="text-white"><i class="fa fa-thumbs-up text-primary me-2"></i>Raised:
-                                    $4000</small>
+                                <!-- <small class="text-white"><i class="fa fa-thumbs-up text-primary me-2"></i>Raised:
+                                    $4000</small> -->
                             </div>
                             <div class="causes-dination p-2">
                                 <a class="btn-hover-bg btn btn-primary text-white py-2 px-3" href="#">Donate Now</a>
                             </div>
                         </div>
-                        <div class="progress">
+                        <!-- <div class="progress">
                             <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0"
                                 aria-valuemax="100">
                                 <span>65%</span>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="causes-content p-4">
                             <h4 class="mb-3">First environments activity of</h4>
                             <p class="mb-4">Help today because tomorrow you may be the one who needs more helping!</p>
@@ -483,19 +483,19 @@
                             <div class="causes-link pb-2 px-3">
                                 <small class="text-white"><i class="fas fa-chart-bar text-primary me-2"></i>Goal:
                                     $3600</small>
-                                <small class="text-white"><i class="fa fa-thumbs-up text-primary me-2"></i>Raised:
-                                    $4000</small>
+                                <!-- <small class="text-white"><i class="fa fa-thumbs-up text-primary me-2"></i>Raised:
+                                    $4000</small> -->
                             </div>
                             <div class="causes-dination p-2">
                                 <a class="btn-hover-bg btn btn-primary text-white py-2 px-3" href="#">Donate Now</a>
                             </div>
                         </div>
-                        <div class="progress">
+                        <!-- <div class="progress">
                             <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0"
                                 aria-valuemax="100">
                                 <span>75%</span>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="causes-content p-4">
                             <h4 class="mb-3">Build school for poor children.</h4>
                             <p class="mb-4">Help today because tomorrow you may be the one who needs more helping!</p>
@@ -511,19 +511,19 @@
                             <div class="causes-link pb-2 px-3">
                                 <small class="text-white"><i class="fas fa-chart-bar text-primary me-2"></i>Goal:
                                     $3600</small>
-                                <small class="text-white"><i class="fa fa-thumbs-up text-primary me-2"></i>Raised:
-                                    $4000</small>
+                                <!-- <small class="text-white"><i class="fa fa-thumbs-up text-primary me-2"></i>Raised:
+                                    $4000</small> -->
                             </div>
                             <div class="causes-dination p-2">
                                 <a class="btn-hover-bg btn btn-primary text-white py-2 px-3" href="#">Donate Now</a>
                             </div>
                         </div>
-                        <div class="progress">
+                        <!-- <div class="progress">
                             <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0"
                                 aria-valuemax="100">
                                 <span>85%</span>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="causes-content p-4">
                             <h4 class="mb-3">Building clean-water system for rural poor.</h4>
                             <p class="mb-4">Help today because tomorrow you may be the one who needs more helping!</p>
@@ -539,19 +539,19 @@
                             <div class="causes-link pb-2 px-3">
                                 <small class="text-white"><i class="fas fa-chart-bar text-primary me-2"></i>Goal:
                                     $3600</small>
-                                <small class="text-white"><i class="fa fa-thumbs-up text-primary me-2"></i>Raised:
-                                    $4000</small>
+                                <!-- <small class="text-white"><i class="fa fa-thumbs-up text-primary me-2"></i>Raised:
+                                    $4000</small> -->
                             </div>
                             <div class="causes-dination p-2">
                                 <a class="btn-hover-bg btn btn-primary text-white py-2 px-3" href="#">Donate Now</a>
                             </div>
                         </div>
-                        <div class="progress">
+                        <!-- <div class="progress">
                             <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0"
                                 aria-valuemax="100">
                                 <span>95%</span>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="causes-content p-4">
                             <h4 class="mb-3">First environments activity of this summer.</h4>
                             <p class="mb-4">Help today because tomorrow you may be the one who needs more helping!</p>
@@ -916,3 +916,4 @@
     </div>
     <!-- Volunteers End -->
 @endsection
+
