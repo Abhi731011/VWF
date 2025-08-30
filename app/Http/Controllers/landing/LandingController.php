@@ -11,7 +11,18 @@ class LandingController extends Controller
 {
     public function index()
     {
-        return view('landing.main');
+        try {
+            $projects = Project::with('category')->get();
+        } catch (\Exception $e) {
+            $projects = collect([]); // Empty collection if there's an error
+        }
+
+        // Ensure projects is always a collection
+        if (!$projects) {
+            $projects = collect([]);
+        }
+
+        return view('landing.main', compact('projects'));
     }
     public function contact()
     {
@@ -27,10 +38,7 @@ class LandingController extends Controller
     }
   public function causes()
     {
-        $projects = Project::all();
-            // ->with('category')
-            
-            // dd($projects);
+        $projects = Project::with('category')->get();
         return view('landing.causes.index', compact('projects'));
     }
     public function events()
