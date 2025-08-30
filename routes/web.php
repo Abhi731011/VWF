@@ -5,13 +5,16 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\AdminContactController;
 use App\Http\Controllers\Admin\PackageController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\landing\LandingController;
-use App\Http\Controllers\admin\ProjectController;
+use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\PaymentController;
 
-Route::get('/', function () {
-    return view('landing.main');
-})->name('index');
+// Route::get('/', function () {
+//     return view('landing.main');
+// })->name('index');
+Route::get('/', [LandingController::class, 'index'])->name('index');
+
 
 // Landing page routes
 Route::get('/about', function () {
@@ -46,6 +49,11 @@ Route::get('/volunteer', function () {
 // Contact routes
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
+// Payment routes
+Route::get('/donate/{projectId?}', [PaymentController::class, 'showDonationForm'])->name('donate');
+Route::post('/payment/create', [PaymentController::class, 'createPayment'])->name('payment.create');
+Route::post('/payment/success', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

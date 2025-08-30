@@ -67,7 +67,7 @@ $baseurl = asset('projects');
                                     <small class="text-white"><i class="fas fa-chart-bar text-primary me-2"></i>Goal: ${{ number_format($project->target_amount ?? 0, 2) }}</small>
                                 </div>
                                 <div class="causes-dination p-2">
-                                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-3" href="#">Donate Now</a>
+                                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-3" href="{{ route('donate', $project->id) }}">Donate Now</a>
                                 </div>
                             </div>
                             <div class="causes-content p-4">
@@ -194,7 +194,7 @@ $baseurl = asset('projects');
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                                    <a class="btn btn-primary" href="#">Donate Now</a>
+                                    <a class="btn btn-primary" href="{{ route('donate', $project->id) }}">Donate Now</a>
                                 </div>
                             </div>
                         </div>
