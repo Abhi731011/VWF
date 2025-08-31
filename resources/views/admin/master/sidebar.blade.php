@@ -1,7 +1,7 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="{{ route('dashboard') }}"> 
+            <a href="{{ route('admin.dashboard') }}"> 
 <img alt="image" src="{{ asset('assets/img/Logowithname.png') }}" 
      class="header-logo" 
      style="height:100px; width:auto;" />
@@ -26,6 +26,13 @@
                     {{-- <li><a class="nav-link" href="#">Portfolio</a></li>
                     <li><a class="nav-link" href="#">Blog</a></li>
                     <li><a class="nav-link" href="#">Calendar</a></li> --}}
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="calendar"></i><span>Events</span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="{{ route('events.index') }}">Manage Events</a></li>
+                    <li><a class="nav-link" href="{{ route('events.create') }}">Add Event</a></li>
                 </ul>
             </li>
             <li class="dropdown">

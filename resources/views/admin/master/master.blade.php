@@ -13,6 +13,25 @@
     <!-- Custom style CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
     <link rel='shortcut icon' type='image/x-icon' href="{{ asset('assets/img/favicon.ico') }}" />
+    
+    <!-- Auto-hide alerts CSS -->
+    <style>
+        /* Auto-hide alerts functionality */
+        .alert {
+            transition: opacity 0.5s ease-out, height 0.5s ease-out, margin 0.5s ease-out, padding 0.5s ease-out;
+        }
+        .alert.auto-hiding {
+            opacity: 0;
+            height: 0;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        /* To disable auto-hide for specific alerts, add class 'no-auto-hide' */
+        .alert.no-auto-hide {
+            /* This alert will not auto-hide */
+        }
+    </style>
     <!-- Feather Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
     <!-- Font Awesome -->
@@ -46,6 +65,63 @@
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script>
         feather.replace();
+        
+        // Auto-hide alerts after 4 seconds
+        document.addEventListener('DOMContentLoaded', function() {
+            // Find all alert elements (including Bootstrap alerts)
+            const alerts = document.querySelectorAll('.alert, .alert-success, .alert-danger, .alert-warning, .alert-info');
+            
+            alerts.forEach(function(alert) {
+                // Skip if alert is already hidden or has auto-hide disabled
+                if (alert.style.display === 'none' || alert.classList.contains('no-auto-hide')) {
+                    return;
+                }
+                
+                // Hide alert after 4 seconds
+                setTimeout(function() {
+                    // Add fade out effect using CSS class
+                    alert.classList.add('auto-hiding');
+                    
+                    // Remove from DOM after fade out
+                    setTimeout(function() {
+                        if (alert.parentNode) {
+                            alert.parentNode.removeChild(alert);
+                        }
+                    }, 500);
+                }, 4000);
+            });
+        });
+        
+        // Also handle dynamically added alerts (for AJAX responses)
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                mutation.addedNodes.forEach(function(node) {
+                    if (node.nodeType === 1 && (node.classList.contains('alert') || node.querySelector('.alert'))) {
+                        const newAlerts = node.classList.contains('alert') ? [node] : node.querySelectorAll('.alert');
+                        newAlerts.forEach(function(alert) {
+                            if (!alert.classList.contains('no-auto-hide')) {
+                                setTimeout(function() {
+                                    // Add fade out effect using CSS class
+                                    alert.classList.add('auto-hiding');
+                                    
+                                    setTimeout(function() {
+                                        if (alert.parentNode) {
+                                            alert.parentNode.removeChild(alert);
+                                        }
+                                    }, 500);
+                                }, 4000);
+                            }
+                        });
+                    }
+                });
+            });
+        });
+        
+        // Start observing the document body for dynamically added alerts
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
     </script>
     @yield('script')
 </body>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Category;
+use App\Models\Event;
 
 class LandingController extends Controller
 {
@@ -43,6 +44,19 @@ class LandingController extends Controller
     }
     public function events()
     {
-        return view('landing.events.index');
+        $events = Event::latest()->get();
+            // ->orderBy('event_date', 'asc')
+            // ->limit(6)
+            // ->get();
+// dd($events);
+        return view('landing.events.index', compact('events'));
+    }
+
+    public function showEvent(Event $event)
+    {
+        // Add some debugging
+        \Log::info('Event found: ' . $event->title . ' with slug: ' . $event->slug);
+        
+        return view('landing.events.show', compact('event'));
     }
 }
