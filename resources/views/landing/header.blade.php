@@ -33,8 +33,8 @@
                     <a href="{{ route('about') }}" class="nav-item nav-link">About</a>
                     <a href="{{ route('services') }}" class="nav-item nav-link">Services</a>
                     <a href="{{ route('causes') }}" class="nav-item nav-link">Causes</a>
-                    <a href="{{ route('events') }}" class="nav-item nav-link">Events</a>
-                    <div class="nav-item dropdown">
+                    <a href="{{ route('eventslanding') }}" class="nav-item nav-link">Events</a>
+                    {{-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu m-0 bg-secondary rounded-0">
                             <a href="{{ route('blog') }}" class="dropdown-item">Blog</a>
@@ -43,7 +43,7 @@
                             <a href="#" class="dropdown-item">Donation</a>
                             <a href="#" class="dropdown-item">404 Error</a>
                         </div>
-                    </div>
+                    </div> --}}
                     <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
                 </div>
                 <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px;">

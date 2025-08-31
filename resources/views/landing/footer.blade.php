@@ -6,10 +6,11 @@
                 <div class="footer-item">
                     <h4 class="mb-4 text-white">Newsletter</h4>
                     <p class="mb-4">Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit.</p>
-                    <div class="position-relative mx-auto">
+                    <a href="{{ route('admin.dashboard') }}" class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3">Admin Login</a>
+                    {{-- <div class="position-relative mx-auto">
                         <input class="form-control border-0 bg-secondary w-100 py-3 ps-4 pe-5" type="text" placeholder="Enter your email">
                         <button type="button" class="btn-hover-bg btn btn-primary position-absolute top-0 end-0 py-2 mt-2 me-2">SignUp</button>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="col-md-6 col-lg-6 col-xl-3">

@@ -53,6 +53,6 @@ class AdminContactController extends Controller
             return response()->json(['success' => 'Contact message deleted successfully.']);
         }
 
-        return redirect()->route('admin.contacts.index')->with('success', 'Contact message deleted successfully.');
+        return redirect()->route('admin.contact.index')->with('success', 'Contact message deleted successfully.');
     }
 }

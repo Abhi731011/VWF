@@ -19,7 +19,7 @@
         </ul>
     </div>
     <ul class="navbar-nav navbar-right">
-        <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle"><i data-feather="mail"></i>
+        {{-- <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle"><i data-feather="mail"></i>
             <span class="badge headerBadge1">6</span> </a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
                 <div class="dropdown-header">
@@ -94,8 +94,8 @@
                     <a href="#">View All <i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
-        </li>
-        <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg"><i data-feather="bell" class="bell"></i></a>
+        </li> --}}
+        {{-- <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg"><i data-feather="bell" class="bell"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
                 <div class="dropdown-header">
                     Notifications
@@ -151,25 +151,36 @@
                     <a href="#">View All <i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
-        </li>
-        <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user"> 
-            <img alt="image" src="{{ asset('assets/img/user.png') }}" class="user-img-radious-style"> 
-            <span class="d-sm-none d-lg-inline-block"></span></a>
-            <div class="dropdown-menu dropdown-menu-right pullDown">
-                <div class="dropdown-title">Hello Sarah Smith</div>
-                <a href="#" class="dropdown-item has-icon"> 
+        </li> --}}
+                 <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user"> 
+             @if(Auth::user() && Auth::user()->profile_img)
+                 <img alt="image" src="{{ asset('admin_profile/' . Auth::user()->profile_img) }}" class="user-img-radious-style"> 
+             @else
+                 <img alt="image" src="{{ asset('assets/img/user.png') }}" class="user-img-radious-style"> 
+             @endif
+             <span class="d-sm-none d-lg-inline-block"></span></a>
+                         <div class="dropdown-menu dropdown-menu-right pullDown">
+                 <div class="dropdown-title">Hello {{ Auth::user() ? Auth::user()->name : 'User' }}</div>
+                <a href="{{ route('admin.profile.edit') }}" class="dropdown-item has-icon"> 
                     <i class="far fa-user"></i> Profile
                 </a> 
-                <a href="#" class="dropdown-item has-icon"> 
+                {{-- <a href="#" class="dropdown-item has-icon"> 
                     <i class="fas fa-bolt"></i> Activities
                 </a> 
                 <a href="#" class="dropdown-item has-icon"> 
                     <i class="fas fa-cog"></i> Settings
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item has-icon text-danger"> 
+                </a> --}}
+                {{-- <div class="dropdown-divider"></div> --}}
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="dropdown-item has-icon text-danger" style="border:none; background:none;">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </form>
+                
+                {{-- <a href="#" class="dropdown-item has-icon text-danger"> 
                     <i class="fas fa-sign-out-alt"></i> Logout
-                </a>
+                </a>  --}}
             </div>
         </li>
     </ul>
