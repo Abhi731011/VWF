@@ -1,9 +1,21 @@
 @extends('landing.master')
 
 @section('content')
+
+<div class="container-fluid bg-breadcrumb">
+            <div class="container text-center py-5" style="max-width: 900px;">
+                <h3 class="text-white display-3 mb-4">Donate Now</h3>
+                <p class="fs-5 text-white mb-4">Help today because tomorrow you may be the one who needs more helping!</p>
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                    <li class="breadcrumb-item active text-white">Services</li>
+                </ol>    
+            </div>
+        </div>
 <!-- Donation Form Start -->
 <div class="container-fluid py-5">
-    <div class="container py-5">
+    <div class="container py-0">
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="card shadow">
@@ -110,6 +122,32 @@ $(document).ready(function() {
     $('.quick-amount').click(function() {
         const amount = $(this).data('amount');
         $('#amount').val(amount);
+        
+        // Remove active class from all quick amount buttons
+        $('.quick-amount').removeClass('btn-success text-white').addClass('btn-outline-primary');
+        
+        // Add active class to clicked button
+        $(this).removeClass('btn-outline-primary').addClass('btn-success text-white');
+    });
+
+    // Handle manual amount input
+    $('#amount').on('input', function() {
+        const enteredAmount = $(this).val();
+        const quickAmounts = [100, 500, 1000, 5000, 10000];
+        
+        // Check if entered amount matches any quick amount
+        const matchingAmount = quickAmounts.find(amount => amount == enteredAmount);
+        
+        if (matchingAmount) {
+            // Remove active class from all quick amount buttons
+            $('.quick-amount').removeClass('btn-success text-white').addClass('btn-outline-primary');
+            
+            // Add active class to matching button
+            $(`.quick-amount[data-amount="${matchingAmount}"]`).removeClass('btn-outline-primary').addClass('btn-success text-white');
+        } else {
+            // Remove active class from all quick amount buttons if no match
+            $('.quick-amount').removeClass('btn-success text-white').addClass('btn-outline-primary');
+        }
     });
 
     // Handle form submission

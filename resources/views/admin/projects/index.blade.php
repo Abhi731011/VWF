@@ -47,7 +47,7 @@
                                         <select class="form-control" id="filter-category" name="category_id">
                                             <option value="">All Categories</option>
                                             <!-- Assuming categories exist in your system -->
-                                            @foreach (\App\Models\Category::all() as $category)
+                                            @foreach (App\Models\Category::all() as $category)
                                                 <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                                             @endforeach
                                         </select>

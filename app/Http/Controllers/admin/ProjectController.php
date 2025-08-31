@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\Category;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
@@ -38,7 +39,7 @@ class ProjectController extends Controller
 
     public function create()
     {
-        $categories = \App\Models\Category::where('is_active', true)->get();
+        $categories = Category::where('is_active', true)->get();
         return view('admin.projects.create', compact('categories'));
     }
 
@@ -159,7 +160,7 @@ class ProjectController extends Controller
 
     public function edit(Project $project)
     {
-        $categories = \App\Models\Category::where('is_active', true)->get();
+        $categories = Category::where('is_active', true)->get();
         return view('admin.projects.edit', compact('project', 'categories'));
     }
 
