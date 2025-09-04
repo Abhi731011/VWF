@@ -10,11 +10,7 @@ $baseurl = asset('projects');
     <div class="container text-center py-5" style="max-width: 900px;">
         <h3 class="text-white display-3 mb-4">Recent Causes</h3>
         <p class="fs-5 text-white mb-4">Support our initiatives to make a difference in communities worldwide.</p>
-        <ol class="breadcrumb justify-content-center mb-0">
-            {{-- <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li> --}}
-            <li class="breadcrumb-item"><a href="#">Pages</a></li>
-            <li class="breadcrumb-item active text-white">Causes</li>
-        </ol>
+        
     </div>
 </div>
 <!-- Header End -->

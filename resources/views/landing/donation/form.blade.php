@@ -6,11 +6,7 @@
     <div class="container text-center py-5" style="max-width: 900px;">
         <h3 class="text-white display-3 mb-4">Donation Form</h1>
         <p class="fs-5 text-white mb-4">Help today because tomorrow you may be the one who needs more helping!</p>
-        <ol class="breadcrumb justify-content-center mb-0">
-            <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Pages</a></li>
-            <li class="breadcrumb-item active text-white">Donation Form</li>
-        </ol>    
+        
     </div>
 </div>
 <!-- Header End -->
@@ -20,8 +16,8 @@
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="card shadow">
-                    <div class="card-header bg-primary text-white text-center">
-                        <h3 class="mb-0">
+                    <div class="card-header bg-primary text-white text-center" style="background-color: var(--bs-primary) !important; color: white !important;">
+                        <h3 class="mb-0" style="color: white !important;">
                             @if($project)
                                 Donate to {{ $project->title }}
                             @else

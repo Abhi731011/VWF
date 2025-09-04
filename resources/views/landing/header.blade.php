@@ -22,7 +22,7 @@
         </div>
         <nav class="navbar navbar-light bg-light navbar-expand-xl">
            <a href="{{ route('index') }}" class="navbar-brand ms-3">
-    <img src="{{ asset('assetslanding/img/logo.png') }}" alt="Vaisvik" class="img-fluid" style="height: 70px;">
+    <img src="{{ asset('assetslanding/img/logoside.png') }}" alt="Vaisvik" class="img-fluid" style="height: 60px;">
 </a>
             <button class="navbar-toggler py-2 px-3 me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars text-primary"></span>

@@ -6,11 +6,7 @@
     <div class="container text-center py-5" style="max-width: 900px;">
         <h3 class="text-white display-3 mb-4">About Us</h3>
         <p class="fs-5 text-white mb-4">Help today because tomorrow you may be the one who needs more helping!</p>
-        <ol class="breadcrumb justify-content-center mb-0">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Pages</a></li>
-            <li class="breadcrumb-item active text-white">About Us</li>
-        </ol>    
+       
     </div>
 </div>
 <!-- Header End -->
@@ -54,9 +50,7 @@
                                         <div class="text-start my-auto">
                                             {{-- <h5 class="text-uppercase mb-3">Lorem Ipsum 1</h5> --}}
                                             <p class="mb-4">At Vaishvik Welfare Foundation, we believe that humans, animals, and nature are deeply connected — and so should be our approach to welfare. While most NGOs work in silos, focusing on just one issue, we’re bridging those gaps to create a holistic, sustainable future for all.</p>
-                                            <div class="d-flex align-items-center justify-content-start">
-                                                <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Read More</a>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -69,9 +63,7 @@
                                         <div class="text-start my-auto">
                                             {{-- <h5 class="text-uppercase mb-3">Lorem Ipsum 2</h5> --}}
                                             <p class="mb-4">Vaishvik Welfare Foundation pioneers integrated welfare — serving rural communities, conserving nature, and uplifting animals through compassionate service, ecological innovation, and inclusive development. With a special focus on cow protection.</p>
-                                            <div class="d-flex align-items-center justify-content-start">
-                                                <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Read More</a>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -84,9 +76,7 @@
                                         <div class="text-start my-auto">
                                             {{-- <h5 class="text-uppercase mb-3">Lorem Ipsum 3</h5> --}}
                                             <p class="mb-4">To lead a new era of social transformation where rural communities thrive, animals are protected with dignity, and nature is preserved — all through compassion-driven action, inclusive growth, and sustainable innovation for generations ahead.</p>
-                                            <div class="d-flex align-items-center justify-content-start">
-                                                <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Read More</a>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -183,7 +173,7 @@
                     <img src="{{ asset('assets/img/Tanishka.JPG') }}" class="card-img-top team-img" alt="John Doe">
                     <div class="card-body text-center d-flex flex-column">
                         <h5 class="card-title mb-1">Tanishka Awasthi</h5>
-                        <p class="text-muted mb-2">HR & People Engagement Bank Manager</p>
+                        <p class="text-muted mb-2">HR & People Engagement Manager</p>
                         <p class="small mb-0 flex-grow-1" style="text-align: justify;">
                             
                             Coordinator at Vaishvik Welfare Foundation, I focus on building a positive, inclusive, and purpose-driven culture. My role blends talent management, volunteer engagement, and team development with the larger mission of the foundation — serving humanity, nature, and animals together through holistic initiatives.
@@ -237,65 +227,7 @@
     </div>
 </div>
 
-<!-- Volunteers Start -->
-<div class="container-fluid volunteer py-5">
-    <div class="container py-5">
-        <div class="row g-5">
-            <div class="col-lg-5">
-                <div class="row g-4">
-                    <div class="col-lg-6">
-                        <div class="volunteer-img">
-                            <img src="{{ asset('assetslanding/img/volunteers-1.jpg') }}" class="img-fluid w-100" alt="Image">
-                            <div class="volunteer-title">
-                                <h5 class="mb-2 text-white">Michel Brown</h5>
-                                <p class="mb-0 text-white">Communicator</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="volunteer-img">
-                            <img src="{{ asset('assetslanding/img/volunteers-3.jpg') }}" class="img-fluid w-100" alt="Image">
-                            <div class="volunteer-title">
-                                <h5 class="mb-2 text-white">Michel Brown</h5>
-                                <p class="mb-0 text-white">Communicator</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="volunteer-img">
-                            <img src="{{ asset('assetslanding/img/volunteers-2.jpg') }}" class="img-fluid w-100" alt="Image">
-                            <div class="volunteer-title">
-                                <h5 class="mb-2 text-white">Michel Brown</h5>
-                                <p class="mb-0 text-white">Communicator</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="volunteer-img">
-                            <img src="{{ asset('assetslanding/img/volunteers-4.jpg') }}" class="img-fluid w-100" alt="Image">
-                            <div class="volunteer-title">
-                                <h5 class="mb-2 text-white">Michel Brown</h5>
-                                <p class="mb-0 text-white">Communicator</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-7">
-                <h5 class="text-uppercase text-primary">Become a Volunteer?</h5>
-                <h1 class="mb-4">Join your hand with us for a better life and beautiful future.</h1>
-                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipiscing elit eiusmod tempor.</p>
-                <p class="text-dark"><i class="fa fa-check text-primary me-2"></i> We are friendly to each other.</p>
-                <p class="text-dark"><i class="fa fa-check text-primary me-2"></i> If you join with us, we will give you free training.</p>
-                <p class="text-dark"><i class="fa fa-check text-primary me-2"></i> It's an opportunity to help poor environments.</p>
-                <p class="text-dark"><i class="fa fa-check text-primary me-2"></i> No goal requirements.</p>
-                <p class="text-dark mb-5"><i class="fa fa-check text-primary me-2"></i> Joining is totally free. We don't need any money from you.</p>
-                <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Join With Us</a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Volunteers End -->
+
 
 <style>
 .team-card {

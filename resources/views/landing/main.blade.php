@@ -25,8 +25,7 @@ $baseurl = asset('projects');
                     <img src="{{ asset('assetslanding/img/carousel-1.jpg') }}" class="img-fluid" alt="Image">
                     <div class="carousel-caption">
                         <div class="p-3" style="max-width: 900px;">
-                            <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">WE'll Save Our
-                                Planet</h4>
+                            <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Because Every Life Matters</h4>
                             <h1 class="display-1 text-capitalize text-white mb-4">Serving Humanity, Nature & Animals Alike
                             </h1>
                             <p class="mb-5 fs-5">India’s first integrated welfare movement nurturing life in all its forms
@@ -41,8 +40,7 @@ $baseurl = asset('projects');
                     <img src="{{ asset('assetslanding/img/carousel-2.jpg') }}" class="img-fluid" alt="Image">
                     <div class="carousel-caption">
                         <div class="p-3" style="max-width: 900px;">
-                            <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">WE'll Save Our
-                                Planet</h4>
+                            <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Because Every Life Matters</h4>
                             <h1 class="display-1 text-capitalize text-white mb-4">Serving Humanity, Nature & Animals Alike
                             </h1>
                             <p class="mb-5 fs-5">India’s first integrated welfare movement nurturing life in all its forms
@@ -57,8 +55,7 @@ $baseurl = asset('projects');
                     <img src="{{ asset('assetslanding/img/carousel-3.jpg') }}" class="img-fluid" alt="Image">
                     <div class="carousel-caption">
                         <div class="p-3" style="max-width: 900px;">
-                            <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">WE'll Save Our
-                                Planet</h4>
+                            <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Because Every Life Matters</h4>
                             <h1 class="display-1 text-capitalize text-white mb-4">Serving Humanity, Nature & Animals Alike
                             </h1>
                             <p class="mb-5 fs-5">India’s first integrated welfare movement nurturing life in all its forms
@@ -123,16 +120,15 @@ $baseurl = asset('projects');
                                     <div class="col-12">
                                         <div class="d-flex">
                                             <div class="text-start my-auto">
-                                                {{-- <h5 class="text-uppercase mb-3">Lorem Ipsum 1</h5> --}}
                                                 <p class="mb-4">At Vaishvik Welfare Foundation, we believe that humans,
                                                     animals, and nature are deeply connected — and so should be our approach
                                                     to welfare. While most NGOs work in silos, focusing on just one issue,
-                                                    we’re bridging those gaps to create a holistic, sustainable future for
+                                                    we're bridging those gaps to create a holistic, sustainable future for
                                                     all.
                                                 </p>
                                                 <div class="d-flex align-items-center justify-content-start">
                                                     <a class="btn-hover-bg btn btn-primary text-white py-2 px-4"
-                                                        href="#">Read More</a>
+                                                        href="{{ route('about') }}">Read More</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -144,7 +140,6 @@ $baseurl = asset('projects');
                                     <div class="col-12">
                                         <div class="d-flex">
                                             <div class="text-start my-auto">
-                                                {{-- <h5 class="text-uppercase mb-3">Lorem Ipsum 2</h5> --}}
                                                 <p class="mb-4">Vaishvik Welfare Foundation pioneers integrated welfare —
                                                     serving rural communities, conserving nature, and uplifting animals
                                                     through compassionate service, ecological innovation, and inclusive
@@ -152,7 +147,7 @@ $baseurl = asset('projects');
                                                 </p>
                                                 <div class="d-flex align-items-center justify-content-start">
                                                     <a class="btn-hover-bg btn btn-primary text-white py-2 px-4"
-                                                        href="#">Read More</a>
+                                                        href="{{ route('about') }}">Read More</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -164,7 +159,6 @@ $baseurl = asset('projects');
                                     <div class="col-12">
                                         <div class="d-flex">
                                             <div class="text-start my-auto">
-                                                {{-- <h5 class="text-uppercase mb-3">Lorem Ipsum 3</h5> --}}
                                                 <p class="mb-4">To lead a new era of social transformation where rural
                                                     communities thrive, animals are protected with dignity, and nature is
                                                     preserved — all through compassion-driven action, inclusive growth, and
@@ -172,7 +166,7 @@ $baseurl = asset('projects');
                                                 </p>
                                                 <div class="d-flex align-items-center justify-content-start">
                                                     <a class="btn-hover-bg btn btn-primary text-white py-2 px-4"
-                                                        href="#">Read More</a>
+                                                        href="{{ route('about') }}">Read More</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -249,78 +243,13 @@ $baseurl = asset('projects');
                 </div>
                 <div class="col-12">
                     <div class="d-flex align-items-center justify-content-center">
-                        <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="{{route('services')}}">Read More</a>
+                        <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="{{route('services')}}">View All</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Services End -->
-
-    <!-- Donation Start -->
-    <!-- <div class="container-fluid donation py-5">
-        <div class="container py-5">
-            <div class="text-center mx-auto pb-5" style="max-width: 800px;">
-                <h5 class="text-uppercase text-primary">Donation</h5>
-                <h1 class="mb-0">Your money will save our life</h1>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-4">
-                    <div class="donation-item">
-                        <img src="{{ asset('assetslanding/img/donation-1.jpg') }}" class="img-fluid w-100"
-                            alt="Image">
-                        <div class="donation-content d-flex flex-column">
-                            <h5 class="text-uppercase text-primary mb-4">Organic</h5>
-                            <a href="#" class="btn-hover-color display-6 text-white">Help Us More</a>
-                            <h4 class="text-white mb-4">Protect Environments</h4>
-                            <p class="text-white mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry. Lorem Ipsum has been the industry's</p>
-                            <div class="donation-btn d-flex align-items-center justify-content-start">
-                                <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Donate !</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="donation-item">
-                        <img src="{{ asset('assetslanding/img/service-2.jpg') }}" class="img-fluid w-100" alt="Image">
-                        <div class="donation-content d-flex flex-column">
-                            <h5 class="text-uppercase text-primary mb-4">Ecosystem</h5>
-                            <a href="#" class="btn-hover-color display-6 text-white">Help Us More</a>
-                            <h4 class="text-white mb-4">Protect Environments</h4>
-                            <p class="text-white mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry. Lorem Ipsum has been the industry's</p>
-                            <div class="donation-btn d-flex align-items-center justify-content-start">
-                                <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Donate !</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="donation-item">
-                        <img src="{{ asset('assetslanding/img/donation-3.jpg') }}" class="img-fluid w-100"
-                            alt="Image">
-                        <div class="donation-content d-flex flex-column">
-                            <h5 class="text-uppercase text-primary mb-4">Recycling</h5>
-                            <a href="#" class="btn-hover-color display-6 text-white">Help Us More</a>
-                            <h4 class="text-white mb-4">Protect Environments</h4>
-                            <p class="text-white mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry. Lorem Ipsum has been the industry's</p>
-                            <div class="donation-btn d-flex align-items-center justify-content-start">
-                                <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Donate !</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="d-flex align-items-center justify-content-center">
-                        <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">All Donation</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- Donation End -->
 
     <!-- Counter Start -->
     <div class="container-fluid counter py-5"
@@ -454,7 +383,7 @@ $baseurl = asset('projects');
                         <p>No projects available at the moment.</p>
                     </div>
                 @else
-                    @foreach ($projects as $project)
+                    @foreach ($projects->take(4) as $project)
                         <div class="col-lg-6 col-xl-3">
                             <div class="causes-item">
                                 <div class="causes-img">
@@ -552,7 +481,7 @@ $baseurl = asset('projects');
                                                 <h5 class="fw-bold mb-3">Short Description</h5>
                                                 <p class="text-muted mb-4">{{ $project->short_description ?? 'No short description available.' }}</p>
                                                 <h5 class="fw-bold mb-3">Description</h5>
-                                                <p class="text-muted mb-4">{{ $project->description ?? 'No description available.' }}</p>
+                                                <p class="mb-4">{{ $project->description ?? 'No description available.' }}</p>
                                                 <h5 class="fw-bold mb-3">Category</h5>
                                                 <p class="text-muted mb-4">{{ $project->category ? $project->category->name : 'No category assigned.' }}</p>
                                                 <h5 class="fw-bold mb-3">Target Amount</h5>
@@ -622,6 +551,11 @@ $baseurl = asset('projects');
                         </div>
                     @endforeach
                 @endif
+                <div class="col-12">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="{{ route('causes') }}">View All</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -697,7 +631,7 @@ $baseurl = asset('projects');
     <!-- Events End -->
 
     <!-- Blog Start -->
-    <div class="container-fluid blog py-5 mb-5">
+    <!-- <div class="container-fluid blog py-5 mb-5">
         <div class="container py-5">
             <div class="text-center mx-auto pb-5" style="max-width: 800px;">
                 <h5 class="text-uppercase text-primary">Latest News</h5>
@@ -807,7 +741,7 @@ $baseurl = asset('projects');
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Blog End -->
 
     <!-- Gallery Start -->
