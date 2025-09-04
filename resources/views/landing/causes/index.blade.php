@@ -69,132 +69,11 @@ $baseurl = asset('projects');
                             <div class="causes-content p-4">
                                 <h4 class="mb-3">{{ $project->title }}</h4>
                                 <p class="mb-4">{{ Str::limit($project->short_description ?? 'No description available.', 100) }}</p>
-                                <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#" data-bs-toggle="modal" data-bs-target="#projectModal-{{ $project->id }}">Read More</a>
+                                <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="{{ route('landing.causes.show', $project->slug) }}">Read More</a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Modal for Project Details -->
-                    <div class="modal fade" id="projectModal-{{ $project->id }}" tabindex="-1" aria-labelledby="projectModalLabel-{{ $project->id }}" aria-hidden="true">
-                        <div class="modal-dialog modal-xl">
-                            <div class="modal-content">
-                                <div class="modal-header bg-primary text-white">
-                                    <h4 class="modal-title" id="projectModalLabel-{{ $project->id }}">{{ $project->title }}</h4>
-                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body p-5">
-                                    <div class="row">
-                                        <!-- Images/Video Section -->
-                                        <div class="col-lg-6 mb-4">
-                                            @if ($project->images && count($project->images) > 1)
-                                                <div id="modal-carousel-{{ $project->id }}" class="carousel slide mb-4" data-bs-ride="carousel">
-                                                    <div class="carousel-inner">
-                                                        @foreach ($project->images as $index => $image)
-                                                            <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                                                                <img src="{{ $baseurl . '/' . $project->slug . '/' . basename($image) }}" class="d-block w-100 rounded" alt="{{ $project->title }} Image" style="object-fit: cover; height: 300px;">
-                                                            </div>
-                                                        @endforeach
-                                                    </div>
-                                                    <button class="carousel-control-prev" type="button" data-bs-target="#modal-carousel-{{ $project->id }}" data-bs-slide="prev">
-                                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                        <span class="visually-hidden">Previous</span>
-                                                    </button>
-                                                    <button class="carousel-control-next" type="button" data-bs-target="#modal-carousel-{{ $project->id }}" data-bs-slide="next">
-                                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                        <span class="visually-hidden">Next</span>
-                                                    </button>
-                                                </div>
-                                            @elseif ($project->images && count($project->images) == 1)
-                                                <img src="{{ $baseurl . '/' . $project->slug . '/' . basename($project->images[0]) }}" class="d-block w-100 rounded mb-4" alt="{{ $project->title }} Image" style="object-fit: cover; height: 300px;">
-                                            @else
-                                                <p class="text-muted">No images available.</p>
-                                            @endif
-                                            @if ($project->video_file)
-                                                <div class="mb-4">
-                                                    <h5 class="fw-bold mb-3">Video</h5>
-                                                    <video class="w-100 rounded" style="max-height: 300px;" controls>
-                                                        <source src="{{ $baseurl . '/' . $project->slug . '/' . basename($project->video_file) }}" type="video/mp4">
-                                                    </video>
-                                                </div>
-                                            @endif
-                                            @if ($project->video_url)
-                                                <h5 class="fw-bold mb-3">Video Link</h5>
-                                                <p><a href="{{ $project->video_url }}" target="_blank" class="btn btn-outline-primary">Watch Video</a></p>
-                                            @endif
-                                        </div>
-                                        <!-- Details Section -->
-                                        <div class="col-lg-6">
-                                            <h5 class="fw-bold mb-3">Short Description</h5>
-                                            <p class="text-muted mb-4">{{ $project->short_description ?? 'No short description available.' }}</p>
-                                            <h5 class="fw-bold mb-3">Description</h5>
-                                            <p class="text-muted mb-4">{{ $project->description ?? 'No description available.' }}</p>
-                                            <h5 class="fw-bold mb-3">Category</h5>
-                                            <p class="text-muted mb-4">{{ $project->category ? $project->category->name : 'No category assigned.' }}</p>
-                                            <h5 class="fw-bold mb-3">Target Amount</h5>
-                                            <p class="text-muted mb-4">${{ number_format($project->target_amount ?? 0, 2) }}</p>
-                                            <h5 class="fw-bold mb-3">Details</h5>
-                                            <ul class="list-unstyled">
-                                                <li class="mb-2"><strong>Organizer:</strong> {{ $project->organizer_name ?? 'N/A' }}</li>
-                                                <li class="mb-2"><strong>Contact Email:</strong> {{ $project->contact_email ?? 'N/A' }}</li>
-                                                <li class="mb-2"><strong>Contact Phone:</strong> {{ $project->contact_phone ?? 'N/A' }}</li>
-                                                <li class="mb-2"><strong>Location:</strong> {{ $project->location ?? 'N/A' }}</li>
-                                                <li class="mb-2"><strong>Status:</strong> {{ ucfirst($project->status ?? 'N/A') }}</li>
-                                                <li class="mb-2"><strong>Recurring:</strong> {{ $project->is_recurring ? 'Yes' : 'No' }}</li>
-                                                <li class="mb-2"><strong>Featured:</strong> {{ $project->is_featured ? 'Yes' : 'No' }}</li>
-                                                <li class="mb-2"><strong>Visibility:</strong> {{ $project->visibility ? 'Visible' : 'Hidden' }}</li>
-                                            </ul>
-                                            @if ($project->tags)
-                                                <h5 class="fw-bold mb-3">Tags</h5>
-                                                <p class="text-muted mb-4">{{ implode(', ', $project->tags) }}</p>
-                                            @endif
-                                            @if ($project->documents)
-                                                <h5 class="fw-bold mb-3">Documents</h5>
-                                                <ul class="list-unstyled">
-                                                    @foreach ($project->documents as $document)
-                                                        <li class="mb-2"><a href="{{ $baseurl . '/' . $project->slug . '/' . basename($document) }}" target="_blank" class="text-primary">{{ basename($document) }}</a></li>
-                                                    @endforeach
-                                                </ul>
-                                            @endif
-                                            @if ($project->faqs)
-                                                <h5 class="fw-bold mb-3">FAQs</h5>
-                                                <div class="accordion" id="faqAccordion-{{ $project->id }}">
-                                                    @foreach ($project->faqs as $index => $faq)
-                                                        <div class="accordion-item">
-                                                            <h2 class="accordion-header" id="faqHeading-{{ $project->id }}-{{ $index }}">
-                                                                <button class="accordion-button {{ $index == 0 ? '' : 'collapsed' }}" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse-{{ $project->id }}-{{ $index }}" aria-expanded="{{ $index == 0 ? 'true' : 'false' }}" aria-controls="faqCollapse-{{ $project->id }}-{{ $index }}">
-                                                                    {{ $faq['question'] ?? 'N/A' }}
-                                                                </button>
-                                                            </h2>
-                                                            <div id="faqCollapse-{{ $project->id }}-{{ $index }}" class="accordion-collapse collapse {{ $index == 0 ? 'show' : '' }}" aria-labelledby="faqHeading-{{ $project->id }}-{{ $index }}" data-bs-parent="#faqAccordion-{{ $project->id }}">
-                                                                <div class="accordion-body">
-                                                                    {{ $faq['answer'] ?? 'N/A' }}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    @endforeach
-                                                </div>
-                                            @endif
-                                            @if ($project->updates)
-                                                <h5 class="fw-bold mb-3">Updates</h5>
-                                                @foreach ($project->updates as $update)
-                                                    <div class="card mb-3">
-                                                        <div class="card-body">
-                                                            <h6 class="card-title">{{ $update['date'] ?? 'N/A' }}</h6>
-                                                            <p class="card-text">{{ $update['content'] ?? 'N/A' }}</p>
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                                    <a class="btn btn-primary" href="{{ route('donate', $project->id) }}">Donate Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 @endforeach
             @endif
         </div>
@@ -204,36 +83,6 @@ $baseurl = asset('projects');
 
 @section('styles')
 <style>
-    .modal-content {
-        border-radius: 10px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    }
-    .modal-header {
-        border-bottom: none;
-        padding-bottom: 0;
-    }
-    .modal-body {
-        background-color: #f8f9fa;
-    }
-    .modal-body h5 {
-        color: #1a73e8;
-        font-size: 1.25rem;
-    }
-    .modal-body p, .modal-body li {
-        font-size: 1rem;
-        line-height: 1.6;
-    }
-    .accordion-button {
-        font-weight: 500;
-        background-color: #fff;
-    }
-    .accordion-body {
-        background-color: #f1f3f5;
-    }
-    .card {
-        border: none;
-        background-color: #fff;
-    }
     .causes-img img {
         border-radius: 8px 8px 0 0;
     }

@@ -90,18 +90,18 @@
                                         <input type="date" class="form-control" id="end_date" name="end_date" value="{{ old('end_date') }}">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <!-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="video_url">Video URL</label>
                                         <input type="url" class="form-control" id="video_url" name="video_url" value="{{ old('video_url') }}">
                                     </div>
-                                </div>
-                                <div class="col-md-6">
+                                </div> -->
+                                <!-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="video_file">Video File</label>
                                         <input type="file" class="form-control" id="video_file" name="video_file">
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="organizer_name">Organizer Name</label>
@@ -136,7 +136,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <!-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="is_recurring">Recurring</label>
                                         <select class="form-control" id="is_recurring" name="is_recurring">
@@ -144,8 +144,8 @@
                                             <option value="1" {{ old('is_recurring') == '1' ? 'selected' : '' }}>Yes</option>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
+                                </div> -->
+                                <!-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="is_featured">Featured</label>
                                         <select class="form-control" id="is_featured" name="is_featured">
@@ -153,8 +153,8 @@
                                             <option value="1" {{ old('is_featured') == '1' ? 'selected' : '' }}>Yes</option>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
+                                </div> -->
+                                <!-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="visibility">Visibility</label>
                                         <select class="form-control" id="visibility" name="visibility">
@@ -162,7 +162,7 @@
                                             <option value="1" {{ old('visibility') == '1' ? 'selected' : '' }}>Visible</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <!-- Tags -->
                                 <div class="col-md-12">
