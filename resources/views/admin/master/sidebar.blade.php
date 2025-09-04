@@ -8,6 +8,31 @@
                 {{-- <span class="logo-name">VWF</span> --}}
             </a>
         </div>
+        
+        <!-- User Info Section -->
+        @if(auth()->check())
+        {{-- <div class="sidebar-user-info" style="padding: 15px; border-bottom: 1px solid #e3e6f0;">
+            <div class="d-flex align-items-center">
+                @if(auth()->user()->profile_img)
+                    <img src="{{ asset('admin_profile/' . auth()->user()->profile_img) }}" alt="Profile" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; margin-right: 10px;">
+                @else
+                    <div style="width: 40px; height: 40px; border-radius: 50%; background-color: #ddd; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
+                        <i class="fas fa-user" style="color: #666;"></i>
+                    </div>
+                @endif
+                <div>
+                    <div style="font-weight: bold; color: #333; font-size: 14px;">{{ auth()->user()->name }}</div>
+                    <div style="font-size: 12px; color: #666;">
+                        @if(auth()->user()->isMainAdmin())
+                            <span style="color: #dc3545; font-weight: bold;">Main Admin</span>
+                        @else
+                            <span style="color: #007bff;">Admin User</span>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div> --}}
+        @endif
         <ul class="sidebar-menu">
             <li class="menu-header">Main</li>
             <li class="dropdown active">
@@ -42,7 +67,16 @@
 
                     <li><a class="nav-link" href="{{ route('packages.index') }}">Manage Packages</a></li>
                 </ul>
-            </li> 
+            </li>
+            @if(auth()->check() && auth()->user()->isMainAdmin())
+            <li class="dropdown" style="border-left: 3px solid #dc3545;">
+                <a href="#" class="menu-toggle nav-link has-dropdown" style="color: #dc3545; font-weight: bold;"><i data-feather="users"></i><span>Admin Users</span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="{{ route('admins.index') }}">Manage Admins</a></li>
+                    <li><a class="nav-link" href="{{ route('admins.create') }}">Add Admin</a></li>
+                </ul>
+            </li>
+            @endif 
         </ul>
     </aside>
 </div>

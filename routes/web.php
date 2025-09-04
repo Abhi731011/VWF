@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\landing\LandingController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\PaymentController;
  
 // Route::get('/', function () {
@@ -107,6 +108,17 @@ Route::get('/packages/{package}', [PackageController::class, 'show'])->name('pac
 Route::get('/packages/{package}/edit', [PackageController::class, 'edit'])->name('packages.edit');
 Route::put('/packages/{package}', [PackageController::class, 'update'])->name('packages.update');
 Route::delete('/packages/{package}', [PackageController::class, 'destroy'])->name('packages.destroy');
+
+// Admin User Management Routes
+Route::get('/admin-users', [AdminController::class, 'index'])->name('admins.index');
+Route::get('/admins/create', [AdminController::class, 'create'])->name('admins.create');
+Route::post('/admins', [AdminController::class, 'store'])->name('admins.store');
+Route::get('/admins/{admin}', [AdminController::class, 'show'])->name('admins.show');
+Route::get('/admins/{admin}/edit', [AdminController::class, 'edit'])->name('admins.edit');
+Route::put('/admins/{admin}', [AdminController::class, 'update'])->name('admins.update');
+Route::delete('/admins/{admin}', [AdminController::class, 'destroy'])->name('admins.destroy');
+Route::post('/admins/{admin}/reset-password', [AdminController::class, 'resetPassword'])->name('admins.reset-password');
+
 });
 require __DIR__.'/auth.php';
  

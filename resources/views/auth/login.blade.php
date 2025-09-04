@@ -87,11 +87,11 @@
               <span class="ml-2 text-sm text-gray-600">Remember me</span>
             </label>
 
-            @if (Route::has('password.request'))
+            {{-- @if (Route::has('password.request'))
               <a href="{{ route('password.request') }}" class="text-sm text-blue-600 hover:text-blue-800">
                 Forgot password?
               </a>
-            @endif
+            @endif --}}
           </div>
 
           <!-- Login Button -->
@@ -103,11 +103,11 @@
 
           <!-- Sign Up -->
           <div class="text-center">
-            @if (Route::has('register'))
+            {{-- @if (Route::has('register'))
               <a href="{{ route('register') }}" class="text-sm text-blue-600 hover:text-blue-800 underline">
                 Don’t have an account? Sign Up
               </a>
-            @endif
+            @endif --}}
           </div>
         </form>
       </div>

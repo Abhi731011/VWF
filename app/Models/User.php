@@ -23,7 +23,14 @@ class User extends Authenticatable
         'password',
         'admin_id',
         'profile_img',
-        
+        'banner_img',
+        'phone',
+        'address',
+        'city',
+        'state',
+        'country',
+        'zip_code',
+        'package_id',
     ];
 
     /**
@@ -47,6 +54,23 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'admin_id' => 'integer',
+            'package_id' => 'integer',
         ];
+    }
+
+    /**
+     * Get the package that the user belongs to.
+     */
+    public function package()
+    {
+        return $this->belongsTo(Package::class);
+    }
+
+    /**
+     * Check if the user is the main admin.
+     */
+    public function isMainAdmin()
+    {
+        return $this->email === 'admin@gmail.com';
     }
 }

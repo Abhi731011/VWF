@@ -46,7 +46,23 @@
         <div class="main-wrapper main-wrapper-1">
             @include('admin.master.header')
             @include('admin.master.sidebar')
-                @yield('content')
+            
+            <!-- Global Error/Success Messages -->
+            @if (session('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin: 20px; z-index: 9999;">
+                    <i class="fas fa-exclamation-triangle"></i> {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+            
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin: 20px; z-index: 9999;">
+                    <i class="fas fa-check-circle"></i> {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+            
+            @yield('content')
             
             @include('admin.master.footer')
         </div>
@@ -124,5 +140,21 @@
         });
     </script>
     @yield('script')
+    
+    <!-- Auto-hide alerts script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Auto-hide alerts after 5 seconds
+            const alerts = document.querySelectorAll('.alert:not(.no-auto-hide)');
+            alerts.forEach(function(alert) {
+                setTimeout(function() {
+                    alert.classList.add('auto-hiding');
+                    setTimeout(function() {
+                        alert.remove();
+                    }, 500); // Remove after transition
+                }, 5000); // Hide after 5 seconds
+            });
+        });
+    </script>
 </body>
 </html>
