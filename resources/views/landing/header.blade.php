@@ -29,11 +29,11 @@
             </button>
             <div class="collapse navbar-collapse bg-light" id="navbarCollapse">
                 <div class="navbar-nav ms-auto">
-                    <a href="{{ route('index') }}" class="nav-item nav-link active">Home</a>
-                    <a href="{{ route('about') }}" class="nav-item nav-link">About</a>
-                    <a href="{{ route('services') }}" class="nav-item nav-link">Services</a>
-                    <a href="{{ route('causes') }}" class="nav-item nav-link">Causes</a>
-                    <a href="{{ route('eventslanding') }}" class="nav-item nav-link">Events</a>
+                    <a href="{{ route('index') }}" class="nav-item nav-link {{ request()->routeIs('index') ? 'active' : '' }}">Home</a>
+                    <a href="{{ route('about') }}" class="nav-item nav-link {{ request()->routeIs('about') ? 'active' : '' }}">About</a>
+                    <a href="{{ route('services') }}" class="nav-item nav-link {{ request()->routeIs('services') ? 'active' : '' }}">Services</a>
+                    <a href="{{ route('causes') }}" class="nav-item nav-link {{ request()->routeIs('causes') || request()->routeIs('landing.causes.show') ? 'active' : '' }}">Causes</a>
+                    <a href="{{ route('eventslanding') }}" class="nav-item nav-link {{ request()->routeIs('eventslanding') || request()->routeIs('landing.events.show') ? 'active' : '' }}">Events</a>
                     {{-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu m-0 bg-secondary rounded-0">
@@ -44,13 +44,13 @@
                             <a href="#" class="dropdown-item">404 Error</a>
                         </div>
                     </div> --}}
-                    <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
+                    <a href="{{ route('contact') }}" class="nav-item nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a>
                 </div>
                 <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px;">
-                    <a href="{{ route('donate') }}" class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3">Donate Now</a>
+                    <a href="{{ route('donate') }}" class="btn-hover-bg btn {{ request()->routeIs('donate') || request()->routeIs('payment.*') ? 'btn-success' : 'btn-primary' }} text-white py-2 px-4 me-3">Donate Now</a>
                 </div>
                 <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px;">
-                    <a href="http://localhost/ngo-user" class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3">Sign In</a>
+                    <a href="https://vaishvikwelfare.org/user" class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3">Sign In</a>
                 </div>
             </div>
         </nav>
