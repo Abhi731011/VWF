@@ -31,7 +31,7 @@ $baseurl = asset('projects');
                             <p class="mb-5 fs-5">India’s first integrated welfare movement nurturing life in all its forms
                             </p>
                             <div class="d-flex align-items-center justify-content-center">
-                                <a class="btn-hover-bg btn btn-primary text-white py-3 px-5" href="#">Join With Us</a>
+                                <a class="btn-hover-bg btn btn-primary text-white py-3 px-5" href="https://vaishvikwelfare.org/user/register">Join With Us</a>
                             </div>
                         </div>
                     </div>
@@ -46,7 +46,7 @@ $baseurl = asset('projects');
                             <p class="mb-5 fs-5">India’s first integrated welfare movement nurturing life in all its forms
                             </p>
                             <div class="d-flex align-items-center justify-content-center">
-                                <a class="btn-hover-bg btn btn-primary text-white py-3 px-5" href="#">Join With Us</a>
+                                <a class="btn-hover-bg btn btn-primary text-white py-3 px-5" href="https://vaishvikwelfare.org/user/register">Join With Us</a>
                             </div>
                         </div>
                     </div>
@@ -61,7 +61,7 @@ $baseurl = asset('projects');
                             <p class="mb-5 fs-5">India’s first integrated welfare movement nurturing life in all its forms
                             </p>
                             <div class="d-flex align-items-center justify-content-center">
-                                <a class="btn-hover-bg btn btn-primary text-white py-3 px-5" href="#">Join With Us</a>
+                                <a class="btn-hover-bg btn btn-primary text-white py-3 px-5" href="https://vaishvikwelfare.org/user/register">Join With Us</a>
                             </div>
                         </div>
                     </div>
@@ -310,7 +310,7 @@ $baseurl = asset('projects');
                 </div>
                 <div class="col-12">
                     <div class="d-flex align-items-center justify-content-center">
-                        <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Join With Us</a>
+                        <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="https://vaishvikwelfare.org/user/register">Join With Us</a>
                     </div>
                 </div>
             </div> --}}
@@ -360,7 +360,7 @@ $baseurl = asset('projects');
     </div>
     <div class="col-12">
         <div class="d-flex align-items-center justify-content-center">
-            <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Join With Us</a>
+            <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="https://vaishvikwelfare.org/user/register">Join With Us</a>
         </div>
     </div>
 </div>
@@ -423,132 +423,12 @@ $baseurl = asset('projects');
                                 <div class="causes-content p-4">
                                     <h4 class="mb-3">{{ $project->title }}</h4>
                                     <p class="mb-4">{{ Str::limit($project->short_description ?? 'No description available.', 100) }}</p>
-                                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#" data-bs-toggle="modal" data-bs-target="#projectModal-{{ $project->id }}">Read More</a>
+                                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="{{route('landing.causes.show', $project->slug)}}">Read More</a>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Modal for Project Details -->
-                        <div class="modal fade" id="projectModal-{{ $project->id }}" tabindex="-1" aria-labelledby="projectModalLabel-{{ $project->id }}" aria-hidden="true">
-                            <div class="modal-dialog modal-xl">
-                                <div class="modal-content">
-                                    <div class="modal-header bg-primary text-white">
-                                        <h4 class="modal-title" id="projectModalLabel-{{ $project->id }}">{{ $project->title }}</h4>
-                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body p-5">
-                                        <div class="row">
-                                            <!-- Images/Video Section -->
-                                            <div class="col-lg-6 mb-4">
-                                                @if ($project->images && count($project->images) > 1)
-                                                    <div id="modal-carousel-{{ $project->id }}" class="carousel slide mb-4" data-bs-ride="carousel">
-                                                        <div class="carousel-inner">
-                                                            @foreach ($project->images as $index => $image)
-                                                                <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                                                                    <img src="{{ $baseurl . '/' . $project->slug . '/' . basename($image) }}" class="d-block w-100 rounded" alt="{{ $project->title }} Image" style="object-fit: cover; height: 300px;">
-                                                                </div>
-                                                            @endforeach
-                                                        </div>
-                                                        <button class="carousel-control-prev" type="button" data-bs-target="#modal-carousel-{{ $project->id }}" data-bs-slide="prev">
-                                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                            <span class="visually-hidden">Previous</span>
-                                                        </button>
-                                                        <button class="carousel-control-next" type="button" data-bs-target="#modal-carousel-{{ $project->id }}" data-bs-slide="next">
-                                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                            <span class="visually-hidden">Next</span>
-                                                        </button>
-                                                    </div>
-                                                @elseif ($project->images && count($project->images) == 1)
-                                                    <img src="{{ $baseurl . '/' . $project->slug . '/' . basename($project->images[0]) }}" class="d-block w-100 rounded mb-4" alt="{{ $project->title }} Image" style="object-fit: cover; height: 300px;">
-                                                @else
-                                                    <p class="text-muted">No images available.</p>
-                                                @endif
-                                                @if ($project->video_file)
-                                                    <div class="mb-4">
-                                                        <h5 class="fw-bold mb-3">Video</h5>
-                                                        <video class="w-100 rounded" style="max-height: 300px;" controls>
-                                                            <source src="{{ $baseurl . '/' . $project->slug . '/' . basename($project->video_file) }}" type="video/mp4">
-                                                        </video>
-                                                    </div>
-                                                @endif
-                                                @if ($project->video_url)
-                                                    <h5 class="fw-bold mb-3">Video Link</h5>
-                                                    <p><a href="{{ $project->video_url }}" target="_blank" class="btn btn-outline-primary">Watch Video</a></p>
-                                                @endif
-                                            </div>
-                                            <!-- Details Section -->
-                                            <div class="col-lg-6">
-                                                <h5 class="fw-bold mb-3">Short Description</h5>
-                                                <p class="text-muted mb-4">{{ $project->short_description ?? 'No short description available.' }}</p>
-                                                <h5 class="fw-bold mb-3">Description</h5>
-                                                <p class="mb-4">{{ $project->description ?? 'No description available.' }}</p>
-                                                <h5 class="fw-bold mb-3">Category</h5>
-                                                <p class="text-muted mb-4">{{ $project->category ? $project->category->name : 'No category assigned.' }}</p>
-                                                <h5 class="fw-bold mb-3">Target Amount</h5>
-                                                <p class="text-muted mb-4">${{ number_format($project->target_amount ?? 0, 2) }}</p>
-                                                <h5 class="fw-bold mb-3">Details</h5>
-                                                <ul class="list-unstyled">
-                                                    <li class="mb-2"><strong>Organizer:</strong> {{ $project->organizer_name ?? 'N/A' }}</li>
-                                                    <li class="mb-2"><strong>Contact Email:</strong> {{ $project->contact_email ?? 'N/A' }}</li>
-                                                    <li class="mb-2"><strong>Contact Phone:</strong> {{ $project->contact_phone ?? 'N/A' }}</li>
-                                                    <li class="mb-2"><strong>Location:</strong> {{ $project->location ?? 'N/A' }}</li>
-                                                    <li class="mb-2"><strong>Status:</strong> {{ ucfirst($project->status ?? 'N/A') }}</li>
-                                                    <li class="mb-2"><strong>Recurring:</strong> {{ $project->is_recurring ? 'Yes' : 'No' }}</li>
-                                                    <li class="mb-2"><strong>Featured:</strong> {{ $project->is_featured ? 'Yes' : 'No' }}</li>
-                                                    <li class="mb-2"><strong>Visibility:</strong> {{ $project->visibility ? 'Visible' : 'Hidden' }}</li>
-                                                </ul>
-                                                @if ($project->tags)
-                                                    <h5 class="fw-bold mb-3">Tags</h5>
-                                                    <p class="text-muted mb-4">{{ implode(', ', $project->tags) }}</p>
-                                                @endif
-                                                @if ($project->documents)
-                                                    <h5 class="fw-bold mb-3">Documents</h5>
-                                                    <ul class="list-unstyled">
-                                                        @foreach ($project->documents as $document)
-                                                            <li class="mb-2"><a href="{{ $baseurl . '/' . $project->slug . '/' . basename($document) }}" target="_blank" class="text-primary">{{ basename($document) }}</a></li>
-                                                        @endforeach
-                                                    </ul>
-                                                @endif
-                                                @if ($project->faqs)
-                                                    <h5 class="fw-bold mb-3">FAQs</h5>
-                                                    <div class="accordion" id="faqAccordion-{{ $project->id }}">
-                                                        @foreach ($project->faqs as $index => $faq)
-                                                            <div class="accordion-item">
-                                                                <h2 class="accordion-header" id="faqHeading-{{ $project->id }}-{{ $index }}">
-                                                                    <button class="accordion-button {{ $index == 0 ? '' : 'collapsed' }}" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse-{{ $project->id }}-{{ $index }}" aria-expanded="{{ $index == 0 ? 'true' : 'false' }}" aria-controls="faqCollapse-{{ $project->id }}-{{ $index }}">
-                                                                        {{ $faq['question'] ?? 'N/A' }}
-                                                                    </button>
-                                                                </h2>
-                                                                <div id="faqCollapse-{{ $project->id }}-{{ $index }}" class="accordion-collapse collapse {{ $index == 0 ? 'show' : '' }}" aria-labelledby="faqHeading-{{ $project->id }}-{{ $index }}" data-bs-parent="#faqAccordion-{{ $project->id }}">
-                                                                    <div class="accordion-body">
-                                                                        {{ $faq['answer'] ?? 'N/A' }}
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        @endforeach
-                                                    </div>
-                                                @endif
-                                                @if ($project->updates)
-                                                    <h5 class="fw-bold mb-3">Updates</h5>
-                                                    @foreach ($project->updates as $update)
-                                                        <div class="card mb-3">
-                                                            <div class="card-body">
-                                                                <h6 class="card-title">{{ $update['date'] ?? 'N/A' }}</h6>
-                                                                <p class="card-text">{{ $update['content'] ?? 'N/A' }}</p>
-                                                            </div>
-                                                        </div>
-                                                    @endforeach
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                                        <a class="btn btn-primary" href="{{ route('donate', $project->id) }}">Donate Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                      
                     @endforeach
                 @endif
                 <div class="col-12">
@@ -568,64 +448,102 @@ $baseurl = asset('projects');
                 <h5 class="text-uppercase text-primary">Upcoming Events</h5>
                 <h1 class="mb-0">Help today because tomorrow you may be the one who needs more helping!</h1>
             </div>
-            <div class="event-carousel owl-carousel">
-                <div class="event-item">
-                    <img src="{{ asset('assetslanding/img/events-1.jpg') }}" class="img-fluid w-100" alt="Image">
-                    <div class="event-content p-4">
-                        <div class="d-flex justify-content-between mb-4">
-                            <span class="text-body"><i class="fas fa-map-marker-alt me-2"></i>Grand Mahal, Dubai
-                                2100.</span>
-                            <span class="text-body"><i class="fas fa-calendar-alt me-2"></i>10 Feb, 2023</span>
+            
+            @if($events->isEmpty())
+                <!-- Fallback content when no events are available -->
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card event-card h-100 border-0 shadow-sm">
+                            <img src="{{ asset('assetslanding/img/events-1.jpg') }}" class="card-img-top" alt="No Events Available" style="height: 200px; object-fit: cover;">
+                            <div class="card-body p-4">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <small class="text-muted"><i class="fas fa-map-marker-alt me-1"></i>Coming Soon</small>
+                                    <small class="text-muted"><i class="fas fa-calendar-alt me-1"></i>TBA</small>
+                                </div>
+                                <h5 class="card-title mb-3">No Events Available</h5>
+                                <p class="card-text text-muted">We are working on bringing you exciting events. Stay tuned for updates!</p>
+                            </div>
+                            <div class="card-footer bg-transparent border-0 p-4">
+                                <a class="btn btn-primary w-100" href="{{ route('eventslanding') }}">View All Events</a>
+                            </div>
                         </div>
-                        <h4 class="mb-4">How To Build A Cleaning Plan</h4>
-                        <p class="mb-4">ikim ipsum dolor sit amet consectur adip sed eiusmod amet consectur adip sed
-                            eiusmod tempor.</p>
-                        <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Read More</a>
                     </div>
                 </div>
-                <div class="event-item">
-                    <img src="{{ asset('assetslanding/img/events-2.jpg') }}" class="img-fluid w-100" alt="Image">
-                    <div class="event-content p-4">
-                        <div class="d-flex justify-content-between mb-4">
-                            <span class="text-body"><i class="fas fa-map-marker-alt me-2"></i>Grand Mahal, Dubai
-                                2100.</span>
-                            <span class="text-body"><i class="fas fa-calendar-alt me-2"></i>10 Feb, 2023</span>
+            @else
+                <div class="row">
+                    @foreach($events as $event)
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card event-card h-100 border-0 shadow-sm">
+                                @if($event->banners && count($event->banners) > 0)
+                                    <img src="{{ asset($event->banners[0]) }}" class="card-img-top" alt="{{ $event->title }}" style="height: 200px; object-fit: cover;">
+                                @else
+                                    <img src="{{ asset('assetslanding/img/events-1.jpg') }}" class="card-img-top" alt="{{ $event->title }}" style="height: 200px; object-fit: cover;">
+                                @endif
+                                <div class="card-body p-4">
+                                    <div class="d-flex justify-content-between mb-3">
+                                        @if($event->venue || $event->location)
+                                            <small class="text-muted">
+                                                <i class="fas fa-map-marker-alt me-1"></i>
+                                                @if($event->venue && $event->location)
+                                                    {{ Str::limit($event->venue . ', ' . $event->location, 20) }}
+                                                @elseif($event->venue)
+                                                    {{ Str::limit($event->venue, 20) }}
+                                                @else
+                                                    {{ Str::limit($event->location, 20) }}
+                                                @endif
+                                            </small>
+                                        @else
+                                            <small class="text-muted"><i class="fas fa-map-marker-alt me-1"></i>Location TBA</small>
+                                        @endif
+                                        
+                                        @if($event->event_date)
+                                            <small class="text-muted">
+                                                <i class="fas fa-calendar-alt me-1"></i>
+                                                {{ $event->event_date->format('d M, Y') }}
+                                            </small>
+                                        @else
+                                            <small class="text-muted"><i class="fas fa-calendar-alt me-1"></i>Date TBA</small>
+                                        @endif
+                                    </div>
+                                    
+                                    <h5 class="card-title mb-3">
+                                        @if($event->title)
+                                            {{ Str::limit($event->title, 50) }}
+                                        @else
+                                            Event Title
+                                        @endif
+                                    </h5>
+                                    
+                                    <p class="card-text text-muted">
+                                        @if($event->short_description)
+                                            {{ Str::limit($event->short_description, 100) }}
+                                        @elseif($event->description)
+                                            {{ Str::limit(strip_tags($event->description), 100) }}
+                                        @else
+                                            Join us for this exciting event! More details coming soon.
+                                        @endif
+                                    </p>
+                                </div>
+                                <div class="card-footer bg-transparent border-0 p-4">
+                                    @if($event->slug)
+                                <a class="btn-hover-bg  btn-primary text-white py-2 px-4 w-300" href="{{ route('landing.causes.show', $project->slug) }}">Read More</a>
+                                                           @else
+                                        <a class="btn btn-primary w-100" href="{{ route('eventslanding') }}">View Events</a>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
-                        <h4 class="mb-4">How To Build A Cleaning Plan</h4>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectur adip sed eiusmod amet consectur adip sed
-                            eiusmod tempor.</p>
-                        <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Read More</a>
+                    @endforeach
+                </div>
+            @endif
+            
+            <!-- View All Events Button -->
+            
+            <div class="col-12">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="{{ route('eventslanding') }}">View All</a>
                     </div>
                 </div>
-                <div class="event-item">
-                    <img src="{{ asset('assetslanding/img/events-3.jpg') }}" class="img-fluid w-100" alt="Image">
-                    <div class="event-content p-4">
-                        <div class="d-flex justify-content-between mb-4">
-                            <span class="text-body"><i class="fas fa-map-marker-alt me-2"></i>Grand Mahal, Dubai
-                                2100.</span>
-                            <span class="text-body"><i class="fas fa-calendar-alt me-2"></i>10 Feb, 2023</span>
-                        </div>
-                        <h4 class="mb-4">How To Build A Cleaning Plan</h4>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectur adip sed eiusmod amet consectur adip sed
-                            eiusmod tempor.</p>
-                        <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Read More</a>
-                    </div>
-                </div>
-                <div class="event-item">
-                    <img src="{{ asset('assetslanding/img/events-4.jpg') }}" class="img-fluid w-100" alt="Image">
-                    <div class="event-content p-4">
-                        <div class="d-flex justify-content-between mb-4">
-                            <span class="text-body"><i class="fas fa-map-marker-alt me-2"></i>Grand Mahal, Dubai
-                                2100.</span>
-                            <span class="text-body"><i class="fas fa-calendar-alt me-2"></i>10 Feb, 2023</span>
-                        </div>
-                        <h4 class="mb-4">How To Build A Cleaning Plan</h4>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectur adip sed eiusmod amet consectur adip sed
-                            eiusmod tempor.</p>
-                        <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Read More</a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <!-- Events End -->
@@ -906,7 +824,7 @@ $baseurl = asset('projects');
                     <p class="text-dark"><i class=" fa fa-check text-primary me-2"></i> No goal requirements.</p>
                     <p class="text-dark mb-5"><i class=" fa fa-check text-primary me-2"></i> Joining is tottaly free. We
                         dont need any money from you.</p>
-                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Join With Us</a>
+                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="https://vaishvikwelfare.org/user/register">Join With Us</a>
                 </div>
             </div>
         </div>
@@ -952,6 +870,47 @@ $baseurl = asset('projects');
         background-color: #fff;
         border-radius: 0 0 8px 8px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Event Card Styles */
+    .event-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    
+    .event-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+    }
+    
+    .event-card .card-img-top {
+        transition: transform 0.3s ease;
+    }
+    
+    .event-card:hover .card-img-top {
+        transform: scale(1.05);
+    }
+    
+    .event-card .card-title {
+        color: #333;
+        font-weight: 600;
+        line-height: 1.3;
+    }
+    
+    .event-card .card-text {
+        line-height: 1.6;
+    }
+    
+    .event-card .btn {
+        border-radius: 25px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    
+    .event-card .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
 </style>
 @endsection

@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\PackageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\landing\LandingController;
+use App\Http\Controllers\landing\CausesController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\AdminController;
@@ -30,7 +31,10 @@ Route::get('/services', function () {
 // Route::get('/causes', function () {
 //     return view('landing.causes.index');
 // })->name('causes');
-Route::get('/causes', [LandingController::class, 'causes'])->name('causes');
+Route::get('/causes', [CausesController::class, 'index'])->name('causes');
+
+// Public causes show route
+Route::get('/causes/{project}', [CausesController::class, 'show'])->name('landing.causes.show');
  
 Route::get('/landing-events', [LandingController::class, 'events'])->name('eventslanding');
  
@@ -85,10 +89,10 @@ Route::delete('/contacts/{contact}', [AdminContactController::class, 'destroy'])
 // Admin Project Management Routes
 Route::get('/admin-projects', [ProjectController::class, 'index'])->name('projects.index');
 Route::get('/projects/create', [ProjectController::class, 'create'])->name('projects.create');
-Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
+Route::post('/projectscreated', [ProjectController::class, 'store'])->name('projects.store');
 Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('projects.show');
 Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
-Route::put('/projects/{project}', [ProjectController::class, 'update'])->name('projects.update');
+Route::put('/projectslanding/{project}', [ProjectController::class, 'update'])->name('projects.update');
 Route::delete('/projects/{project}', [ProjectController::class, 'destroy'])->name('projects.destroy');
  
 // Admin Event Management Routes
