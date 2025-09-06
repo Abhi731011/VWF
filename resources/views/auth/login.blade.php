@@ -19,29 +19,27 @@
   </style>
 </head>
 <body class="h-screen">
-  <div class="flex h-full">
-    <!-- Left side -->
-    <div class="w-1/2 relative bg-gradient-to-br from-green-700 via-green-800 to-gray-900 text-white flex flex-col items-center justify-center p-10">
+  <div class="flex flex-col md:flex-row h-full">
+    <!-- Info Section -->
+    <div class="w-full md:w-1/2 relative bg-gradient-to-br from-green-700 via-green-800 to-gray-900 text-white flex flex-col items-center justify-center p-10">
       <!-- Overlay -->
       <div class="absolute inset-0 bg-black bg-opacity-40"></div>
       <div class="relative z-10 text-center">
-        <img src="{{asset('/assets/img/logo/logo.png')}}" alt="Logo" class="w-40 h-40 mx-auto mb-8 drop-shadow-lg">
-        <h1 class="text-5xl font-extrabold leading-tight mb-6">Vaishvik Welfare Foundation</h1>
-        <p class="text-lg text-gray-200 max-w-md mx-auto">
+        <img src="{{asset('/assets/img/logo/logo.png')}}" alt="Logo" class="w-32 h-32 md:w-40 md:h-40 mx-auto mb-6 drop-shadow-lg">
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-4 md:mb-6">Vaishvik Welfare Foundation</h1>
+        <p class="text-base md:text-lg text-gray-200 max-w-md mx-auto">
           Building a better future through service, dedication, and empowerment.
         </p>
       </div>
     </div>
 
-    <!-- Right side -->
-    <div class="w-1/2 bg-white flex flex-col items-center justify-center p-10">
-      <img src="{{asset('/assets/img/logo/Logowithname.png')}}" alt="Logo" class="w-40 h-40">
-        <h1 class="text-4xl font-extrabold text-green-800 mb-4">Welcome Admin</h1>
-
-      <h2 class="text-2xl text-gray-700 mb-2 font-semibold">Please login to continue</h2>
+    <!-- Login Form Section -->
+    <div class="w-full md:w-1/2 bg-white flex flex-col items-center justify-center p-8 md:p-10">
+      <img src="{{asset('/assets/img/logo/Logowithname.png')}}" alt="Logo" class="w-28 h-28 md:w-40 md:h-40 mb-4">
+      <h1 class="text-2xl md:text-4xl font-extrabold text-green-800 mb-3 md:mb-4">Welcome Admin</h1>
+      <h2 class="text-lg md:text-2xl text-gray-700 mb-4 font-semibold">Please login to continue</h2>
 
       <div class="form-container w-full max-w-md">
-
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -60,7 +58,7 @@
               autofocus 
               autocomplete="username"
               placeholder="Enter your email"
-              class="w-full h-14 px-4 text-base border border-gray-400 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400 focus:border-blue-500"
+              class="w-full h-12 md:h-14 px-4 text-base border border-gray-400 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400 focus:border-blue-500"
             >
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
           </div>
@@ -75,39 +73,24 @@
               required 
               autocomplete="current-password"
               placeholder="Enter your password"
-              class="w-full h-14 px-4 text-base border border-gray-400 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400 focus:border-blue-500"
+              class="w-full h-12 md:h-14 px-4 text-base border border-gray-400 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400 focus:border-blue-500"
             >
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
           </div>
 
-          <!-- Remember Me + Forgot -->
+          <!-- Remember Me -->
           <div class="flex items-center justify-between">
             <label class="inline-flex items-center">
               <input type="checkbox" id="remember_me" name="remember" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
               <span class="ml-2 text-sm text-gray-600">Remember me</span>
             </label>
-
-            {{-- @if (Route::has('password.request'))
-              <a href="{{ route('password.request') }}" class="text-sm text-blue-600 hover:text-blue-800">
-                Forgot password?
-              </a>
-            @endif --}}
           </div>
 
           <!-- Login Button -->
           <div>
-            <button type="submit" class="w-full h-14 bg-blue-600 text-white rounded-lg text-lg font-semibold shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition">
+            <button type="submit" class="w-full h-12 md:h-14 bg-blue-600 text-white rounded-lg text-md font-semibold shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition">
               Log in
             </button>
-          </div>
-
-          <!-- Sign Up -->
-          <div class="text-center">
-            {{-- @if (Route::has('register'))
-              <a href="{{ route('register') }}" class="text-sm text-blue-600 hover:text-blue-800 underline">
-                Don’t have an account? Sign Up
-              </a>
-            @endif --}}
           </div>
         </form>
       </div>

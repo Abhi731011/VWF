@@ -164,23 +164,20 @@
                 <a href="{{ route('admin.profile.edit') }}" class="dropdown-item has-icon"> 
                     <i class="far fa-user"></i> Profile
                 </a> 
-                {{-- <a href="#" class="dropdown-item has-icon"> 
-                    <i class="fas fa-bolt"></i> Activities
-                </a> 
-                <a href="#" class="dropdown-item has-icon"> 
-                    <i class="fas fa-cog"></i> Settings
-                </a> --}}
-                {{-- <div class="dropdown-divider"></div> --}}
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="dropdown-item has-icon text-danger" style="border:none; background:none;">
-                        <i class="fas fa-sign-out-alt"></i> Logout
-                    </button>
-                </form>
                 
-                {{-- <a href="#" class="dropdown-item has-icon text-danger"> 
-                    <i class="fas fa-sign-out-alt"></i> Logout
-                </a>  --}}
+               
+                <form action="{{ route('logout') }}" method="POST" class="m-0 p-0">
+  @csrf
+  <button type="submit" 
+          class="dropdown-item has-icon text-danger d-flex align-items-center"
+          style="border:none; background:none; width:100%; text-align:left;">
+      <i class="fas fa-sign-out-alt mr-2"></i> 
+      Logout
+  </button>
+</form>
+
+                
+               
             </div>
         </li>
     </ul>
