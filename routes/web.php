@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\AdminContactController;
 use App\Http\Controllers\Admin\PackageController;
+use App\Http\Controllers\Admin\GalleryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\landing\LandingController;
@@ -40,14 +41,15 @@ Route::get('/landing-events', [LandingController::class, 'events'])->name('event
  
 // Public event show route
 Route::get('/landing-events/{event}', [LandingController::class, 'showEvent'])->name('landing.events.show');
+
+// Public gallery route
+Route::get('/gallery-landing', [LandingController::class, 'gallery'])->name('gallerylanding');
  
 Route::get('/blog', function () {
     return view('landing.main');
 })->name('blog');
  
-Route::get('/gallery', function () {
-    return view('landing.main');
-})->name('gallery');
+// This route is now handled by the gallerylanding route above
  
 Route::get('/volunteer', function () {
     return view('landing.main');
@@ -112,6 +114,15 @@ Route::get('/packages/{package}', [PackageController::class, 'show'])->name('pac
 Route::get('/packages/{package}/edit', [PackageController::class, 'edit'])->name('packages.edit');
 Route::put('/packages/{package}', [PackageController::class, 'update'])->name('packages.update');
 Route::delete('/packages/{package}', [PackageController::class, 'destroy'])->name('packages.destroy');
+
+// Admin Gallery Management Routes
+Route::get('/admin-galleries', [GalleryController::class, 'index'])->name('galleries.index');
+Route::get('/galleries/create', [GalleryController::class, 'create'])->name('galleries.create');
+Route::post('/galleries', [GalleryController::class, 'store'])->name('galleries.store');
+Route::get('/galleries/{gallery}', [GalleryController::class, 'show'])->name('galleries.show');
+Route::get('/galleries/{gallery}/edit', [GalleryController::class, 'edit'])->name('galleries.edit');
+Route::put('/galleries/{gallery}', [GalleryController::class, 'update'])->name('galleries.update');
+Route::delete('/galleries/{gallery}', [GalleryController::class, 'destroy'])->name('galleries.destroy');
 
 // Admin User Management Routes
 Route::get('/admin-users', [AdminController::class, 'index'])->name('admins.index');

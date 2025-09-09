@@ -34,6 +34,7 @@
                     <a href="{{ route('services') }}" class="nav-item nav-link {{ request()->routeIs('services') ? 'active' : '' }}">Services</a>
                     <a href="{{ route('causes') }}" class="nav-item nav-link {{ request()->routeIs('causes') || request()->routeIs('landing.causes.show') ? 'active' : '' }}">Causes</a>
                     <a href="{{ route('eventslanding') }}" class="nav-item nav-link {{ request()->routeIs('eventslanding') || request()->routeIs('landing.events.show') ? 'active' : '' }}">Events</a>
+                    <a href="{{ route('gallerylanding') }}" class="nav-item nav-link {{ request()->routeIs('gallerylanding') ? 'active' : '' }}">Gallery</a>
                     {{-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu m-0 bg-secondary rounded-0">

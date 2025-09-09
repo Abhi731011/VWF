@@ -68,6 +68,13 @@
                     <li><a class="nav-link" href="{{ route('packages.index') }}">Manage Packages</a></li>
                 </ul>
             </li>
+            <li class="dropdown">
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="image"></i><span>Gallery</span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="{{ route('galleries.create') }}">Add Gallery</a></li>
+                    <li><a class="nav-link" href="{{ route('galleries.index') }}">Manage Gallery</a></li>
+                </ul>
+            </li>
             @if(auth()->check() && auth()->user()->isMainAdmin())
             <li class="dropdown" style="border-left: 3px solid #dc3545;">
                 <a href="#" class="menu-toggle nav-link has-dropdown" style="color: #dc3545; font-weight: bold;"><i data-feather="users"></i><span>Admin Users</span></a>

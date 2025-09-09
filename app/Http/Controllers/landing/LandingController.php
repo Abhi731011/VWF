@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Category;
 use App\Models\Event;
+use App\Models\Gallery;
 
 class LandingController extends Controller
 {
@@ -79,5 +80,14 @@ class LandingController extends Controller
         \Log::info('Event found: ' . $event->title . ' with slug: ' . $event->slug);
         
         return view('landing.events.show', compact('event'));
+    }
+
+    public function gallery()
+    {
+        $galleries = Gallery::where('status', true)
+            // ->orderBy('sort_order')
+            ->get();
+            
+        return view('landing.gallery.index', compact('galleries'));
     }
 }
