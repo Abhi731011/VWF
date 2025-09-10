@@ -58,6 +58,7 @@
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('events.index') }}">Manage Events</a></li>
                     <li><a class="nav-link" href="{{ route('events.create') }}">Add Event</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.event-registrations.index') }}">Event Registrations</a></li>
                 </ul>
             </li>
             <li class="dropdown">
@@ -66,6 +67,13 @@
                                         <li><a class="nav-link" href="{{ route('packages.create') }}">Add Package</a></li>
 
                     <li><a class="nav-link" href="{{ route('packages.index') }}">Manage Packages</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="image"></i><span>Gallery</span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="{{ route('galleries.create') }}">Add Gallery</a></li>
+                    <li><a class="nav-link" href="{{ route('galleries.index') }}">Manage Gallery</a></li>
                 </ul>
             </li>
             @if(auth()->check() && auth()->user()->isMainAdmin())
