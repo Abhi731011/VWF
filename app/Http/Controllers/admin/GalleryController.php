@@ -105,16 +105,6 @@ class GalleryController extends Controller
             'sort_order' => 'nullable|integer|min:0',
         ]);
 
-        // Custom validation for new images
-        if ($request->hasFile('new_images')) {
-            $newImages = $request->file('new_images');
-            foreach ($newImages as $index => $image) {
-                if ($image && !$image->isValid()) {
-                    $validator->errors()->add("new_images.{$index}", "The image at position {$index} is not valid.");
-                }
-            }
-        }
-
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with([
                 'error' => 'Failed to update gallery. Please check the input fields.'
@@ -129,54 +119,32 @@ class GalleryController extends Controller
             File::makeDirectory($galleryFolder, 0755, true);
         }
 
-        // Update existing images descriptions and handle deletions
+        // Update existing images descriptions
         $existingImages = $gallery->images ?? [];
-        $deletedImages = $request->deleted_images ?? [];
-        $existingImagePaths = $request->existing_image_paths ?? [];
-        $existingImageDescriptions = $request->existing_image_descriptions ?? [];
-        
-        $updatedImages = [];
-        foreach ($existingImages as $index => $imageData) {
-            // Check if this image is marked for deletion
-            if (isset($deletedImages[$index]) && $deletedImages[$index] == '1') {
-                // Delete the physical file
-                if (isset($imageData['image'])) {
-                    $imagePath = public_path($imageData['image']);
-                    if (File::exists($imagePath)) {
-                        File::delete($imagePath);
-                    }
+        if ($request->has('existing_image_descriptions')) {
+            foreach ($existingImages as $index => &$imageData) {
+                if (isset($request->existing_image_descriptions[$index])) {
+                    $imageData['description'] = $request->existing_image_descriptions[$index];
                 }
-                // Skip adding this image to the updated array (effectively deleting it)
-                continue;
             }
-            
-            // Update description if provided
-            if (isset($existingImageDescriptions[$index])) {
-                $imageData['description'] = $existingImageDescriptions[$index];
-            }
-            
-            $updatedImages[] = $imageData;
         }
 
         // Handle new image uploads
         if ($request->hasFile('new_images')) {
-            $newImages = $request->file('new_images');
-            $newDescriptions = $request->new_image_descriptions ?? [];
-            
-            foreach ($newImages as $index => $image) {
-                if ($image && $image->isValid()) {
+            foreach ($request->file('new_images') as $index => $image) {
+                if ($image) {
                     $filename = time() . '_' . $index . '_' . $image->getClientOriginalName();
                     $image->move($galleryFolder, $filename);
                     
-                    $updatedImages[] = [
+                    $existingImages[] = [
                         'image' => 'gallery/' . $filename,
-                        'description' => $newDescriptions[$index] ?? ''
+                        'description' => $request->new_image_descriptions[$index] ?? ''
                     ];
                 }
             }
         }
 
-        $data['images'] = $updatedImages;
+        $data['images'] = $existingImages;
         $data['status'] = $request->has('status') ? true : false;
 
         $gallery->update($data);

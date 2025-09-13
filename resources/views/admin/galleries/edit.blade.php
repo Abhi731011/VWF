@@ -1,37 +1,5 @@
 @extends('admin.master.master')
 
-@section('style')
-<style>
-    .existing-image-item {
-        transition: all 0.3s ease;
-    }
-    
-    .existing-image-item.deleted {
-        opacity: 0.3;
-        background-color: #f8d7da !important;
-        border-color: #f5c6cb !important;
-    }
-    
-    .image-preview {
-        position: relative;
-    }
-    
-    .deleted-overlay {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: rgba(220, 53, 69, 0.9);
-        color: white;
-        padding: 8px 12px;
-        border-radius: 4px;
-        font-size: 12px;
-        font-weight: bold;
-        z-index: 10;
-    }
-</style>
-@endsection
-
 @section('content')
 <div class="main-content">
     <div class="content container-fluid">
@@ -119,11 +87,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1 d-flex align-items-end">
-                                                        <button type="button" class="btn btn-danger remove-existing-image" data-image-index="{{ $index }}">
+                                                        <button type="button" class="btn btn-danger remove-existing-image">
                                                             <i class="fas fa-trash"></i>
                                                         </button>
-                                                        <input type="hidden" name="existing_image_paths[]" value="{{ $imageData['image'] }}">
-                                                        <input type="hidden" name="deleted_images[]" value="0" class="deleted-image-flag">
                                                     </div>
                                                 </div>
                                             </div>
@@ -195,8 +161,6 @@
 @endsection
 
 @section('script')
-<!-- SweetAlert2 CDN -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         let newImageIndex = 1;
@@ -249,53 +213,7 @@
         // Remove existing image functionality
         document.addEventListener('click', function(e) {
             if (e.target.closest('.remove-existing-image')) {
-                const button = e.target.closest('.remove-existing-image');
-                const imageItem = button.closest('.existing-image-item');
-                const imageIndex = button.getAttribute('data-image-index');
-                
-                // Show SweetAlert confirmation dialog
-                Swal.fire({
-                    title: 'Delete Image?',
-                    text: 'Are you sure you want to delete this image? This action cannot be undone.',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#d33',
-                    cancelButtonColor: '#3085d6',
-                    confirmButtonText: 'Yes, delete it!',
-                    cancelButtonText: 'Cancel'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        // Mark the image as deleted instead of removing from DOM
-                        const deletedFlag = imageItem.querySelector('.deleted-image-flag');
-                        if (deletedFlag) {
-                            deletedFlag.value = '1';
-                        }
-                        
-                        // Add deleted class for styling
-                        imageItem.classList.add('deleted');
-                        
-                        // Disable the delete button
-                        button.disabled = true;
-                        button.innerHTML = '<i class="fas fa-check"></i> Deleted';
-                        button.classList.remove('btn-danger');
-                        button.classList.add('btn-secondary');
-                        
-                        // Add a visual indicator
-                        const preview = imageItem.querySelector('.image-preview');
-                        if (preview) {
-                            preview.innerHTML += '<div class="deleted-overlay">DELETED</div>';
-                        }
-                        
-                        // Show success message
-                        Swal.fire({
-                            title: 'Image Marked for Deletion',
-                            text: 'The image has been marked for deletion. Click "Update Gallery" to confirm the changes.',
-                            icon: 'success',
-                            timer: 2000,
-                            showConfirmButton: false
-                        });
-                    }
-                });
+                e.target.closest('.existing-image-item').remove();
             }
         });
 
@@ -312,33 +230,6 @@
 
         // Initialize remove buttons visibility
         updateNewImageRemoveButtons();
-
-        // Form submission validation
-        document.querySelector('form').addEventListener('submit', function(e) {
-            const newImageInputs = document.querySelectorAll('input[name="new_images[]"]');
-            let hasValidImage = false;
-            
-            newImageInputs.forEach(input => {
-                if (input.files && input.files.length > 0) {
-                    hasValidImage = true;
-                }
-            });
-            
-            // If there are new image inputs but no files selected, show warning
-            if (newImageInputs.length > 0 && !hasValidImage) {
-                if (confirm('You have added new image fields but no files are selected. Do you want to continue without uploading new images?')) {
-                    // Remove empty file inputs to prevent validation errors
-                    newImageInputs.forEach(input => {
-                        if (!input.files || input.files.length === 0) {
-                            input.remove();
-                        }
-                    });
-                } else {
-                    e.preventDefault();
-                    return false;
-                }
-            }
-        });
     });
 </script>
 @endsection
