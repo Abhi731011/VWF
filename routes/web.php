@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\EventRegistrationController;
+use App\Http\Controllers\Admin\SupportFeedbackController;
 use App\Http\Controllers\PaymentController;
  
 // Route::get('/', function () {
@@ -141,6 +142,15 @@ Route::get('/admins/{admin}/edit', [AdminController::class, 'edit'])->name('admi
 Route::put('/admins/{admin}', [AdminController::class, 'update'])->name('admins.update');
 Route::delete('/admins/{admin}', [AdminController::class, 'destroy'])->name('admins.destroy');
 Route::post('/admins/{admin}/reset-password', [AdminController::class, 'resetPassword'])->name('admins.reset-password');
+
+// Admin Support Feedback Management Routes
+Route::get('/admin/support-feedback', [SupportFeedbackController::class, 'index'])->name('admin.support-feedback.index');
+Route::get('/admin/support-feedback/{supportFeedback}', [SupportFeedbackController::class, 'show'])->name('admin.support-feedback.show');
+Route::put('/admin/support-feedback/{supportFeedback}/response', [SupportFeedbackController::class, 'updateResponse'])->name('admin.support-feedback.update-response');
+Route::post('/admin/support-feedback/{supportFeedback}/close', [SupportFeedbackController::class, 'close'])->name('admin.support-feedback.close');
+Route::put('/admin/support-feedback/{supportFeedback}/status', [SupportFeedbackController::class, 'updateStatus'])->name('admin.support-feedback.update-status');
+Route::delete('/admin/support-feedback/{supportFeedback}', [SupportFeedbackController::class, 'destroy'])->name('admin.support-feedback.destroy');
+Route::get('/admin/support-feedback-stats', [SupportFeedbackController::class, 'getStats'])->name('admin.support-feedback.stats');
 
 });
 require __DIR__.'/auth.php';

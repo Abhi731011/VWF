@@ -45,6 +45,12 @@
                 </ul>
             </li>
             <li class="dropdown">
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="headphones"></i><span>Support & Feedback</span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="{{ route('admin.support-feedback.index') }}">Manage Tickets</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>Projects</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('projects.index') }}">Add Project</a></li>
