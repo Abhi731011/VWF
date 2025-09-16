@@ -36,8 +36,8 @@
         .certificate-container {
             width: 100%;
             min-height: 320px;
-            background: {{ $design->background_color ?? '#ffffff' }};
-            border: {{ $design->border_width ?? 6 }}px solid {{ $design->border_color ?? '#d4af37' }};
+            background: #d1ecf1;
+            border: 6px solid #17a2b8;
             position: relative;
             padding: 25px 80px 35px 80px;
             background-image: 
@@ -50,7 +50,7 @@
             position: absolute;
             width: 80px;
             height: 80px;
-            border: 3px solid {{ $design->border_color ?? '#d4af37' }};
+            border: 3px solid #17a2b8;
             opacity: 0.8;
         }
         
@@ -91,7 +91,7 @@
             position: absolute;
             width: 3px;
             height: 120px;
-            background: linear-gradient(180deg, {{ $design->border_color ?? '#d4af37' }}, transparent, {{ $design->border_color ?? '#d4af37' }});
+            background: linear-gradient(180deg, #17a2b8, transparent, #17a2b8);
             top: 50%;
             transform: translateY(-50%);
             opacity: 0.6;
@@ -111,11 +111,11 @@
             position: absolute;
             width: 12px;
             height: 12px;
-            background: {{ $design->border_color ?? '#d4af37' }};
+            background: #17a2b8;
             border-radius: 50%;
             left: 50%;
             transform: translateX(-50%);
-            box-shadow: 0 0 0 3px white, 0 0 0 6px {{ $design->border_color ?? '#d4af37' }};
+            box-shadow: 0 0 0 3px white, 0 0 0 6px #17a2b8;
         }
         
         .side-decoration::before {
@@ -142,8 +142,8 @@
         
         .organization-name {
             font-family: 'Playfair Display', serif;
-            font-size: {{ $design->organization_font_size ?? 22 }}px;
-            color: {{ $design->organization_color ?? '#2c3e50' }};
+            font-size: 20px;
+            color: #17a2b8;
             margin-bottom: 15px;
             font-weight: 600;
             letter-spacing: 2px;
@@ -151,8 +151,8 @@
         
         .certificate-title {
             font-family: 'Playfair Display', serif;
-            font-size: {{ $design->title_font_size ?? 42 }}px;
-            color: {{ $design->title_color ?? '#2c3e50' }};
+            font-size: 40px;
+            color: #17a2b8;
             margin-bottom: 10px;
             font-weight: 700;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
@@ -162,7 +162,7 @@
         .certificate-subtitle {
             font-family: 'Open Sans', sans-serif;
             font-size: 16px;
-            color: {{ $design->text_color ?? '#7f8c8d' }};
+            color: #212529;
             font-weight: 400;
             letter-spacing: 3px;
             margin-bottom: 25px;
@@ -176,7 +176,7 @@
         
         .presentation-text {
             font-size: 18px;
-            color: {{ $design->text_color ?? '#34495e' }};
+            color: #212529;
             margin-bottom: 20px;
             line-height: 1.6;
             font-weight: 400;
@@ -186,7 +186,7 @@
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            border: 4px solid {{ $design->border_color ?? '#d4af37' }};
+            border: 4px solid #17a2b8;
             margin: 20px auto;
             display: block;
             object-fit: cover;
@@ -195,8 +195,8 @@
         
         .recipient-name {
             font-family: 'Dancing Script', cursive;
-            font-size: {{ $design->name_font_size ?? 36 }}px;
-            color: {{ $design->title_color ?? '#d4af37' }};
+            font-size: 30px;
+            color: #17a2b8;
             font-weight: 700;
             margin: 25px 0;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
@@ -212,7 +212,7 @@
             top: 50%;
             width: 60px;
             height: 2px;
-            background: linear-gradient(90deg, {{ $design->border_color ?? '#d4af37' }}, transparent);
+            background: linear-gradient(90deg, #17a2b8, transparent);
         }
         
         .recipient-name::before {
@@ -228,20 +228,20 @@
             content: '●';
             position: absolute;
             top: -3px;
-            color: {{ $design->border_color ?? '#d4af37' }};
+            color: #17a2b8;
             font-size: 8px;
         }
         
         .appreciation-text {
             font-size: 15px;
-            color: {{ $design->text_color ?? '#34495e' }};
+            color: #212529;
             margin: 15px 0;
             line-height: 1.6;
             text-align: center;
             padding: 20px;
             background: rgba(212, 175, 55, 0.05);
             border-radius: 12px;
-            border-left: 4px solid {{ $design->border_color ?? '#d4af37' }};
+            border-left: 4px solid #17a2b8;
             font-style: italic;
             position: relative;
         }
@@ -252,7 +252,7 @@
             top: -8px;
             left: 15px;
             font-size: 50px;
-            color: {{ $design->border_color ?? '#d4af37' }};
+            color: #17a2b8;
             opacity: 0.3;
             font-family: 'Playfair Display', serif;
         }
@@ -264,7 +264,7 @@
             font-weight: 700;
             text-align: center;
             padding: 20px;
-            background: linear-gradient(135deg, {{ $design->border_color ?? '#d4af37' }}, #b8941f);
+            background: linear-gradient(135deg, #17a2b8, #b8941f);
             border-radius: 12px;
             box-shadow: 0 8px 16px rgba(212, 175, 55, 0.3);
             position: relative;
@@ -289,7 +289,7 @@
         
         .certificate-id {
             font-size: 13px;
-            color: {{ $design->text_color ?? '#95a5a6' }};
+            color: #212529;
             margin: 25px 0;
             padding: 12px;
             background: rgba(0,0,0,0.05);
@@ -307,7 +307,7 @@
             margin-top: 20px;
             padding-top: 20px;
             padding-bottom: 10px;
-            border-top: 2px solid {{ $design->border_color ?? '#ecf0f1' }};
+            border-top: 2px solid #17a2b8;
             position: relative;
             z-index: 10;
         }
@@ -320,14 +320,14 @@
         
         .date-label {
             font-size: 14px;
-            color: {{ $design->text_color ?? '#95a5a6' }};
+            color: #212529;
             margin-bottom: 8px;
             font-weight: 400;
         }
         
         .date-value {
             font-size: 16px;
-            color: {{ $design->text_color ?? '#2c3e50' }};
+            color: #212529;
             font-weight: 600;
         }
         
@@ -345,15 +345,15 @@
         }
         
         .signature-name {
-            font-size: {{ $design->signature_font_size ?? 18 }}px;
-            color: {{ $design->text_color ?? '#2c3e50' }};
+            font-size: 18px;
+            color: #212529;
             font-weight: 600;
             margin-bottom: 5px;
         }
         
         .signature-title {
             font-size: 14px;
-            color: {{ $design->text_color ?? '#95a5a6' }};
+            color: #212529;
             font-weight: 400;
         }
         
@@ -397,7 +397,31 @@
         }
         
         /* Custom CSS Override */
-        {!! $design->custom_css ?? '' !!}
+        
+                .certificate-container {
+                    background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+                }
+                .certificate-title {
+                    color: #17a2b8;
+                    text-shadow: 3px 3px 6px rgba(23, 162, 184, 0.4);
+                }
+                .recipient-name {
+                    color: #17a2b8;
+                    border-bottom: 4px solid #17a2b8;
+                }
+                .corner-decoration {
+                    border-color: #17a2b8;
+                    border-width: 3px;
+                }
+                .side-decoration {
+                    background: #17a2b8;
+                    width: 3px;
+                }
+                .certificate-id {
+                    background: rgba(23, 162, 184, 0.1);
+                    border: 1px solid #17a2b8;
+                }
+            
     </style>
 </head>
 <body>
@@ -415,8 +439,8 @@
             
             <!-- Header -->
             <div class="header">
-                <img src="{{ $logoUrl }}" alt="Organization Logo" class="logo">
-                <div class="organization-name">{{ $design->organization_name ?? 'Vaishvik Welfare Foundation' }}</div>
+                <img src="http://127.0.0.1:8000/assets/img/Logowithname.png" alt="Organization Logo" class="logo">
+                <div class="organization-name">Vaishvik Welfare Foundation</div>
                 <div class="certificate-title">CERTIFICATE</div>
                 <div class="certificate-subtitle">OF APPRECIATION</div>
             </div>
@@ -427,51 +451,22 @@
                     This certificate is proudly presented to
                 </div>
                 
-                @if($certificateRequest->image_path)
-                <img src="{{ $userImageUrl }}" alt="{{ $certificateRequest->full_name }}" class="recipient-image">
-                @endif
+                                <img src="http://localhost/ngo-user/public/uploads/certificates/uploads/certificates/certificate_7_1758040939.jpg" alt="Abhishek Tripathi" class="recipient-image">
+                                
+                <div class="recipient-name">Abhishek Tripathi</div>
                 
-                <div class="recipient-name">{{ $certificateRequest->full_name }}</div>
-                
-                @if($daysTogether >= 180) {{-- 6+ months --}}
+                 
                 <div class="appreciation-text">
                     has demonstrated exceptional leadership and outstanding service to our community for over six months.
                 </div>
                 
                 <div class="days-together">
-                    Celebrating {{ $daysTogether }} days of exceptional leadership and transformative impact.
+                    Celebrating 776 days of exceptional leadership and transformative impact.
                 </div>
                 
-                @elseif($daysTogether >= 90) {{-- 3+ months --}}
-                <div class="appreciation-text">
-                    has demonstrated outstanding dedication and exceptional service to our community for over three months.
-                </div>
-                
-                <div class="days-together">
-                    Celebrating {{ $daysTogether }} days of dedicated service and meaningful impact.
-                </div>
-                
-                @elseif($daysTogether >= 30) {{-- 1+ months --}}
-                <div class="appreciation-text">
-                    has demonstrated commendable dedication and valuable service to our community for over one month.
-                </div>
-                
-                <div class="days-together">
-                    Celebrating {{ $daysTogether }} days of dedicated service and growing commitment.
-                </div>
-                
-                @else {{-- Less than 1 month --}}
-                <div class="appreciation-text">
-                    has demonstrated genuine interest and commitment to our community mission.
-                </div>
-                
-                <div class="days-together">
-                    Celebrating {{ $daysTogether }} days of enthusiastic participation and growing commitment.
-                </div>
-                @endif
-                
+                                
                 <div class="certificate-id">
-                    <strong>Certificate ID:</strong> {{ $certificateRequest->certificate_id }}
+                    <strong>Certificate ID:</strong> VWF-2025-A60922CB
                 </div>
             </div>
             
@@ -479,20 +474,13 @@
             <div class="footer">
                 <div class="date-section">
                     <div class="date-label">Date of Issue:</div>
-                    <div class="date-value">{{ now()->format('F d, Y') }}</div>
+                    <div class="date-value">September 16, 2025</div>
                 </div>
                 
                 <div class="signature-section">
-                    @if($design->signature_image)
-                    <img src="{{ asset('storage/' . $design->signature_image) }}" alt="Signature" class="signature-image">
-                    @endif
-                    @if($design->signature_name)
-                    <div class="signature-name">{{ $design->signature_name }}</div>
-                    @endif
-                    @if($design->signature_title)
-                    <div class="signature-title">{{ $design->signature_title }}</div>
-                    @endif
-                </div>
+                                                            <div class="signature-name">Director</div>
+                                                            <div class="signature-title">Vaishvik Welfare Foundation</div>
+                                    </div>
             </div>
         </div>
     </div>

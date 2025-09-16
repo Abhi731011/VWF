@@ -60,6 +60,11 @@ class CertificateRequestController extends Controller
 
         $certificateDesign = CertificateDesign::findOrFail($request->certificate_design_id);
         
+        // Generate certificate ID if not exists
+        if (empty($certificateRequest->certificate_id)) {
+            $certificateRequest->certificate_id = CertificateRequest::generateCertificateId();
+        }
+        
         // Generate certificate PDF
         $certificatePath = $this->generateCertificatePDF($certificateRequest, $certificateDesign);
         
@@ -108,7 +113,7 @@ class CertificateRequestController extends Controller
     private function generateCertificatePDF(CertificateRequest $certificateRequest, CertificateDesign $design)
     {
         $user = $certificateRequest->user;
-        $daysTogether = $user->created_at->diffInDays(now());
+        $daysTogether = (int) $user->created_at->diffInDays(now());
         
         // Create certificate HTML
         $html = $this->generateCertificateHTML($certificateRequest, $design, $daysTogether);
