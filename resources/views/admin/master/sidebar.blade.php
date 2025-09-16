@@ -76,6 +76,14 @@
                 </ul>
             </li>
             <li class="dropdown">
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="award"></i><span>Certificates</span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="{{ route('admin.certificates.index') }}">Certificate Requests</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.certificate-designs.index') }}">Certificate Designs</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.certificate-designs.create') }}">Create Design</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="image"></i><span>Gallery</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('galleries.create') }}">Add Gallery</a></li>
