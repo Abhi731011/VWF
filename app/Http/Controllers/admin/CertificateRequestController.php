@@ -1,0 +1,175 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use App\Models\CertificateRequest;
+use App\Models\CertificateDesign;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
+
+class CertificateRequestController extends Controller
+{
+    /**
+     * Display a listing of certificate requests.
+     */
+    public function index(Request $request)
+    {
+        $query = CertificateRequest::with(['user', 'approvedBy', 'rejectedBy', 'certificateDesign']);
+
+        // Apply filters
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        if ($request->filled('full_name')) {
+            $query->where('full_name', 'like', '%' . $request->full_name . '%');
+        }
+
+        if ($request->filled('email')) {
+            $query->where('email', 'like', '%' . $request->email . '%');
+        }
+
+        $certificateRequests = $query->orderBy('created_at', 'desc')->paginate(10);
+
+        return view('admin.certificates.index', compact('certificateRequests'));
+    }
+
+    /**
+     * Display the specified certificate request.
+     */
+    public function show(CertificateRequest $certificateRequest)
+    {
+        $certificateRequest->load(['user', 'approvedBy', 'rejectedBy', 'certificateDesign']);
+        $certificateDesigns = CertificateDesign::active()->get();
+        
+        return view('admin.certificates.show', compact('certificateRequest', 'certificateDesigns'));
+    }
+
+    /**
+     * Approve a certificate request.
+     */
+    public function approve(Request $request, CertificateRequest $certificateRequest)
+    {
+        $request->validate([
+            'certificate_design_id' => 'required|exists:certificate_designs,id',
+        ]);
+
+        $certificateDesign = CertificateDesign::findOrFail($request->certificate_design_id);
+        
+        // Generate certificate PDF
+        $certificatePath = $this->generateCertificatePDF($certificateRequest, $certificateDesign);
+        
+        // Update certificate request
+        $certificateRequest->update([
+            'status' => 'approved',
+            'approved_at' => now(),
+            'approved_by' => auth()->id(),
+            'certificate_path' => $certificatePath,
+            'certificate_design_id' => $certificateDesign->id,
+        ]);
+
+        // Send approval email with certificate
+        $this->sendApprovalEmail($certificateRequest);
+
+        return redirect()->route('admin.certificates.show', $certificateRequest)
+            ->with('success', 'Certificate request approved successfully and certificate sent via email.');
+    }
+
+    /**
+     * Reject a certificate request.
+     */
+    public function reject(Request $request, CertificateRequest $certificateRequest)
+    {
+        $request->validate([
+            'rejection_reason' => 'required|string|max:1000',
+        ]);
+
+        $certificateRequest->update([
+            'status' => 'rejected',
+            'rejected_at' => now(),
+            'rejected_by' => auth()->id(),
+            'rejection_reason' => $request->rejection_reason,
+        ]);
+
+        // Send rejection email
+        $this->sendRejectionEmail($certificateRequest);
+
+        return redirect()->route('admin.certificates.show', $certificateRequest)
+            ->with('success', 'Certificate request rejected and notification sent via email.');
+    }
+
+    /**
+     * Generate certificate PDF.
+     */
+    private function generateCertificatePDF(CertificateRequest $certificateRequest, CertificateDesign $design)
+    {
+        $user = $certificateRequest->user;
+        $daysTogether = $user->created_at->diffInDays(now());
+        
+        // Create certificate HTML
+        $html = $this->generateCertificateHTML($certificateRequest, $design, $daysTogether);
+        
+        // Create certificates directory in public folder if it doesn't exist
+        $publicPath = public_path('certificates');
+        if (!file_exists($publicPath)) {
+            mkdir($publicPath, 0755, true);
+        }
+        
+        // Store certificate in public folder
+        $filename = 'certificate_' . $certificateRequest->certificate_id . '_' . time() . '.html';
+        $filePath = $publicPath . '/' . $filename;
+        
+        file_put_contents($filePath, $html);
+        
+        // Return relative path for database storage
+        return 'certificates/' . $filename;
+    }
+
+    /**
+     * Generate certificate HTML.
+     */
+    private function generateCertificateHTML(CertificateRequest $certificateRequest, CertificateDesign $design, $daysTogether)
+    {
+        $userImageUrl = 'http://localhost/ngo-user/public/uploads/certificates/' . ($certificateRequest->image_path ?? 'user.png');
+        $logoUrl = $design->organization_logo ? asset('storage/' . $design->organization_logo) : asset('assets/img/Logowithname.png');
+        
+        return view('admin.certificates.certificate-template', compact('certificateRequest', 'design', 'daysTogether', 'userImageUrl', 'logoUrl'))->render();
+    }
+
+    /**
+     * Send approval email with certificate.
+     */
+    private function sendApprovalEmail(CertificateRequest $certificateRequest)
+    {
+        $data = [
+            'name' => $certificateRequest->full_name,
+            'certificate_path' => $certificateRequest->certificate_path,
+            'certificate_id' => $certificateRequest->certificate_id,
+        ];
+
+        Mail::send('emails.certificate-approved', $data, function ($message) use ($certificateRequest) {
+            $message->to($certificateRequest->email, $certificateRequest->full_name)
+                    ->subject('Certificate of Appreciation - Approved');
+        });
+    }
+
+    /**
+     * Send rejection email.
+     */
+    private function sendRejectionEmail(CertificateRequest $certificateRequest)
+    {
+        $data = [
+            'name' => $certificateRequest->full_name,
+            'rejection_reason' => $certificateRequest->rejection_reason,
+        ];
+
+        Mail::send('emails.certificate-rejected', $data, function ($message) use ($certificateRequest) {
+            $message->to($certificateRequest->email, $certificateRequest->full_name)
+                    ->subject('Certificate Request - Update');
+        });
+    }
+}

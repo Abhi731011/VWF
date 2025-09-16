@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\EventRegistrationController;
+use App\Http\Controllers\Admin\CertificateRequestController;
+use App\Http\Controllers\Admin\CertificateDesignController;
 use App\Http\Controllers\PaymentController;
  
 // Route::get('/', function () {
@@ -45,6 +47,15 @@ Route::get('/landing-events/{event}', [LandingController::class, 'showEvent'])->
 
 // Public gallery route
 Route::get('/gallery-landing', [LandingController::class, 'gallery'])->name('gallerylanding');
+
+// Public certificate view route
+Route::get('/certificate/{certificateRequest}', function($certificateRequest) {
+    $request = App\Models\CertificateRequest::findOrFail($certificateRequest);
+    if ($request->status !== 'approved' || !$request->certificate_path) {
+        abort(404);
+    }
+    return response()->file(public_path($request->certificate_path));
+})->name('certificate.view');
  
 Route::get('/blog', function () {
     return view('landing.main');
@@ -141,6 +152,22 @@ Route::get('/admins/{admin}/edit', [AdminController::class, 'edit'])->name('admi
 Route::put('/admins/{admin}', [AdminController::class, 'update'])->name('admins.update');
 Route::delete('/admins/{admin}', [AdminController::class, 'destroy'])->name('admins.destroy');
 Route::post('/admins/{admin}/reset-password', [AdminController::class, 'resetPassword'])->name('admins.reset-password');
+
+// Admin Certificate Request Management Routes
+Route::get('/admin/certificate-requests', [CertificateRequestController::class, 'index'])->name('admin.certificates.index');
+Route::get('/admin/certificate-requests/{certificateRequest}', [CertificateRequestController::class, 'show'])->name('admin.certificates.show');
+Route::post('/admin/certificate-requests/{certificateRequest}/approve', [CertificateRequestController::class, 'approve'])->name('admin.certificates.approve');
+Route::post('/admin/certificate-requests/{certificateRequest}/reject', [CertificateRequestController::class, 'reject'])->name('admin.certificates.reject');
+
+// Admin Certificate Design Management Routes
+Route::get('/admin/certificate-designs', [CertificateDesignController::class, 'index'])->name('admin.certificate-designs.index');
+Route::get('/admin/certificate-designs/create', [CertificateDesignController::class, 'create'])->name('admin.certificate-designs.create');
+Route::post('/admin/certificate-designs', [CertificateDesignController::class, 'store'])->name('admin.certificate-designs.store');
+Route::get('/admin/certificate-designs/{certificateDesign}', [CertificateDesignController::class, 'show'])->name('admin.certificate-designs.show');
+Route::get('/admin/certificate-designs/{certificateDesign}/edit', [CertificateDesignController::class, 'edit'])->name('admin.certificate-designs.edit');
+Route::put('/admin/certificate-designs/{certificateDesign}', [CertificateDesignController::class, 'update'])->name('admin.certificate-designs.update');
+Route::delete('/admin/certificate-designs/{certificateDesign}', [CertificateDesignController::class, 'destroy'])->name('admin.certificate-designs.destroy');
+Route::post('/admin/certificate-designs/{certificateDesign}/set-default', [CertificateDesignController::class, 'setDefault'])->name('admin.certificate-designs.set-default');
 
 });
 require __DIR__.'/auth.php';
