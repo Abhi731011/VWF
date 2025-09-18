@@ -8,13 +8,18 @@ use App\Models\Project;
 use App\Models\Category;
 use App\Models\Event;
 use App\Models\Gallery;
+use App\Models\User;
 
 class LandingController extends Controller
 {
     public function index()
     {
         try {
-            $projects = Project::with('category')->where('status', 'published')->get();
+            $projects = Project::with('category')
+            ->where('status', 'published')
+            ->where('visibility', true)
+            
+            ->get();
         } catch (\Exception $e) {
             $projects = collect([]); // Empty collection if there's an error
         }
@@ -22,6 +27,7 @@ class LandingController extends Controller
         // Ensure projects is always a collection
         if (!$projects) {
             $projects = collect([]);
+
         }
 
         try {
@@ -40,7 +46,11 @@ class LandingController extends Controller
             $events = collect([]);
         }
 
-        return view('landing.main', compact('projects', 'events'));
+        // Get footer data
+        $footerData = $this->getFooterData();
+
+        return view('landing.main', compact('projects', 'events', 'footerData'));
+
     }
     public function contact()
     {
@@ -89,5 +99,64 @@ class LandingController extends Controller
             ->get();
             
         return view('landing.gallery.index', compact('galleries'));
+    }
+
+    /**
+     * Get footer data including gallery images and events
+     */
+    public function getFooterData()
+    {
+        try {
+            // Get latest 6 gallery images for footer
+            $galleryImages = collect();
+            Gallery::where('status', true)
+                ->whereNotNull('images')
+                ->get()
+                ->each(function ($gallery) use (&$galleryImages) {
+                    foreach ($gallery->images as $imageData) {
+                        if (isset($imageData['image'])) {
+                            $galleryImages->push(asset($imageData['image']));
+                        }
+                    }
+                });
+            
+            $galleryImages = $galleryImages->take(6)->values();
+
+            // Get ongoing programs (projects) for programs section
+            $ongoingPrograms = Project::where('status', 'published')
+                ->where('visibility', true)
+                ->latest()
+                ->limit(5)
+                ->get(['id', 'title', 'slug']);
+
+            // Get top 5 ongoing events for footer
+            $ongoingEvents = Event::where('status', 'published')
+                ->where('visibility', true)
+                ->where('event_date', '>=', now())
+                ->orderBy('event_date', 'asc')
+                ->limit(5)
+                ->get(['id', 'title', 'slug', 'event_date']);
+
+            // Get recent volunteers (users) for volunteer section
+            $recentVolunteers = User::latest()
+                ->limit(6)
+                ->get(['id', 'name']);
+
+            return [
+                'gallery_images' => $galleryImages,
+                'ongoing_programs' => $ongoingPrograms,
+                'ongoing_events' => $ongoingEvents,
+                'recent_volunteers' => $recentVolunteers,
+            ];
+        } catch (\Exception $e) {
+            \Log::error('Footer data error: ' . $e->getMessage());
+            
+            return [
+                'gallery_images' => [],
+                'ongoing_programs' => [],
+                'ongoing_events' => [],
+                'recent_volunteers' => [],
+            ];
+        }
     }
 }

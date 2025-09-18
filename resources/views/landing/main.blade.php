@@ -548,127 +548,12 @@ $baseurl = asset('projects');
     </div>
     <!-- Events End -->
 
-    <!-- Blog Start -->
-    <!-- <div class="container-fluid blog py-5 mb-5">
-        <div class="container py-5">
-            <div class="text-center mx-auto pb-5" style="max-width: 800px;">
-                <h5 class="text-uppercase text-primary">Latest News</h5>
-                <h1 class="mb-0">Help today because tomorrow you may be the one who needs more helping!
-                </h1>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-6 col-xl-3">
-                    <div class="blog-item">
-                        <div class="blog-img">
-                            <img src="{{ asset('assetslanding/img/blog-1.jpg') }}" class="img-fluid w-100"
-                                alt="">
-                            <div class="blog-info">
-                                <span><i class="fa fa-clock"></i> Dec 01.2024</span>
-                                <div class="d-flex">
-                                    <span class="me-3"> 3 <i class="fa fa-heart"></i></span>
-                                    <a href="#" class="text-white">0 <i class="fa fa-comment"></i></a>
-                                </div>
-                            </div>
-                            <div class="search-icon">
-                                <a href="{{ asset('assetslanding/img/blog-1.jpg') }}" data-lightbox="Blog-1"
-                                    class="my-auto"><i class="fas fa-search-plus btn-primary text-white p-3"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-dark border p-4 ">
-                            <h4 class="mb-4">Save The Topic Forests</h4>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectur adip sed eiusmod amet consectur adip sed
-                                eiusmod tempor.</p>
-                            <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-xl-3">
-                    <div class="blog-item">
-                        <div class="blog-img">
-                            <img src="{{ asset('assetslanding/img/blog-2.jpg') }}" class="img-fluid w-100"
-                                alt="">
-                            <div class="blog-info">
-                                <span><i class="fa fa-clock"></i> Dec 01.2024</span>
-                                <div class="d-flex">
-                                    <span class="me-3"> 3 <i class="fa fa-heart"></i></span>
-                                    <a href="#" class="text-white">0 <i class="fa fa-comment"></i></a>
-                                </div>
-                            </div>
-                            <div class="search-icon">
-                                <a href="{{ asset('assetslanding/img/blog-2.jpg') }}" data-lightbox="Blog-2"
-                                    class="my-auto"><i class="fas fa-search-plus btn-primary text-white p-3"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-dark border p-4 ">
-                            <h4 class="mb-4">Save The Topic Forests</h4>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectur adip sed eiusmod amet consectur adip sed
-                                eiusmod tempor.</p>
-                            <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-xl-3">
-                    <div class="blog-item">
-                        <div class="blog-img">
-                            <img src="{{ asset('assetslanding/img/blog-3.jpg') }}" class="img-fluid w-100"
-                                alt="">
-                            <div class="blog-info">
-                                <span><i class="fa fa-clock"></i> Dec 01.2024</span>
-                                <div class="d-flex">
-                                    <span class="me-3"> 3 <i class="fa fa-heart"></i></span>
-                                    <a href="#" class="text-white">0 <i class="fa fa-comment"></i></a>
-                                </div>
-                            </div>
-                            <div class="search-icon">
-                                <a href="{{ asset('assetslanding/img/blog-3.jpg') }}" data-lightbox="Blog-3"
-                                    class="my-auto"><i class="fas fa-search-plus btn-primary text-white p-3"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-dark border p-4 ">
-                            <h4 class="mb-4">Save The Topic Forests</h4>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectur adip sed eiusmod amet consectur adip sed
-                                eiusmod tempor.</p>
-                            <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-xl-3">
-                    <div class="blog-item">
-                        <div class="blog-img">
-                            <img src="{{ asset('assetslanding/img/blog-4.jpg') }}" class="img-fluid w-100"
-                                alt="">
-                            <div class="blog-info">
-                                <span><i class="fa fa-clock"></i> Dec 01.2024</span>
-                                <div class="d-flex">
-                                    <span class="me-3"> 3 <i class="fa fa-heart"></i></span>
-                                    <a href="#" class="text-white">0 <i class="fa fa-comment"></i></a>
-                                </div>
-                            </div>
-                            <div class="search-icon">
-                                <a href="{{ asset('assetslanding/img/blog-4.jpg') }}" data-lightbox="Blog-4"
-                                    class="my-auto"><i class="fas fa-search-plus btn-primary text-white p-3"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-dark border p-4 ">
-                            <h4 class="mb-4">Save The Topic Forests</h4>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectur adip sed eiusmod amet consectur adip sed
-                                eiusmod tempor.</p>
-                            <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- Blog End -->
-
     <!-- Gallery Start -->
-    <div class="container-fluid gallery py-5 px-0">
+    <div class="container-fluid gallery py-0 px-0">
         <div class="text-center mx-auto pb-5" style="max-width: 800px;">
             <h5 class="text-uppercase text-primary">Our work</h5>
             <h1 class="mb-4">We consider environment welfare</h1>
-            <p class="mb-0">Lorem ipsum dolor sit amet consectur adip sed eiusmod amet consectur adip sed eiusmod tempor
-                ipsum dolor sit amet consectur adip sed eiusmod amet consectur adip sed eiusmod tempor.</p>
+            <p class="mb-0">Capturing moments of hope, compassion, and positive change in our community</p>
         </div>
         <div class="row g-0">
             <div class="col-lg-4">
@@ -679,14 +564,7 @@ $baseurl = asset('projects');
                             class="my-auto"><i
                                 class="fas fa-search-plus btn-hover-color bg-white text-primary p-3"></i></a>
                     </div>
-                    <div class="gallery-content">
-                        <div class="gallery-inner pb-5">
-                            <a href="#" class="h4 text-white">Beauty Of Life</a>
-                            <a href="#" class="text-white">
-                                <p class="mb-0">Gallery Name</p>
-                            </a>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div class="gallery-item">
                     <img src="{{ asset('assetslanding/img/gallery-3.jpg') }}" class="img-fluid w-100" alt="">
@@ -695,14 +573,7 @@ $baseurl = asset('projects');
                             class="my-auto"><i
                                 class="fas fa-search-plus btn-hover-color bg-white text-primary p-3"></i></a>
                     </div>
-                    <div class="gallery-content">
-                        <div class="gallery-inner pb-5">
-                            <a href="#" class="h4 text-white">Beauty Of Life</a>
-                            <a href="#" class="text-white">
-                                <p class="mb-0">Gallery Name</p>
-                            </a>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
             <div class="col-lg-4">
@@ -713,14 +584,7 @@ $baseurl = asset('projects');
                             class="my-auto"><i
                                 class="fas fa-search-plus btn-hover-color bg-white text-primary p-3"></i></a>
                     </div>
-                    <div class="gallery-content">
-                        <div class="gallery-inner pb-5">
-                            <a href="#" class="h4 text-white">Beauty Of Life</a>
-                            <a href="#" class="text-white">
-                                <p class="mb-0">Gallery Name</p>
-                            </a>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
             <div class="col-lg-4">
@@ -731,14 +595,7 @@ $baseurl = asset('projects');
                             class="my-auto"><i
                                 class="fas fa-search-plus btn-hover-color bg-white text-primary p-3"></i></a>
                     </div>
-                    <div class="gallery-content">
-                        <div class="gallery-inner pb-5">
-                            <a href="#" class="h4 text-white">Beauty Of Life</a>
-                            <a href="#" class="text-white">
-                                <p class="mb-0">Gallery Name</p>
-                            </a>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div class="gallery-item">
                     <img src="{{ asset('assetslanding/img/gallery-5.jpg') }}" class="img-fluid w-100" alt="">
@@ -747,89 +604,14 @@ $baseurl = asset('projects');
                             class="my-auto"><i
                                 class="fas fa-search-plus btn-hover-color bg-white text-primary p-3"></i></a>
                     </div>
-                    <div class="gallery-content">
-                        <div class="gallery-inner pb-5">
-                            <a href="#" class="h4 text-white">Beauty Of Life</a>
-                            <a href="#" class="text-white">
-                                <p class="mb-0">Gallery Name</p>
-                            </a>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
     </div>
     <!-- Gallery End -->
 
-    <!-- Volunteers Start -->
-    <div class="container-fluid volunteer py-5 mt-5">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-5">
-                    <div class="row g-4">
-                        <div class="col-lg-6">
-                            <div class="volunteer-img">
-                                <img src="{{ asset('assetslanding/img/volunteers-1.jpg') }}" class="img-fluid w-100"
-                                    alt="Image">
-                                <div class="volunteer-title">
-                                    <h5 class="mb-2 text-white">Michel Brown</h5>
-                                    <p class="mb-0 text-white">Communicator</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="volunteer-img">
-                                <img src="{{ asset('assetslanding/img/volunteers-3.jpg') }}" class="img-fluid w-100"
-                                    alt="Image">
-                                <div class="volunteer-title">
-                                    <h5 class="mb-2 text-white">Michel Brown</h5>
-                                    <p class="mb-0 text-white">Communicator</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="volunteer-img">
-                                <img src="{{ asset('assetslanding/img/volunteers-2.jpg') }}" class="img-fluid w-100"
-                                    alt="Image">
-                                <div class="volunteer-title">
-                                    <h5 class="mb-2 text-white">Michel Brown</h5>
-                                    <p class="mb-0 text-white">Communicator</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="volunteer-img">
-                                <img src="{{ asset('assetslanding/img/volunteers-4.jpg') }}" class="img-fluid w-100"
-                                    alt="Image">
-                                <div class="volunteer-title">
-                                    <h5 class="mb-2 text-white">Michel Brown</h5>
-                                    <p class="mb-0 text-white">Communicator</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-7">
-                    <h5 class="text-uppercase text-primary">Become a Volunteer?</h5>
-                    <h1 class="mb-4">Join your hand with us for a better life and beautiful future.</h1>
-                    <p class="mb-4">Lorem ipsum dolor sit amet consectur adip sed eiusmod amet consectur adip sed eiusmod
-                        tempor amet consectur adip sed eiusmod amet consectur adip sed eiusmod tempor amet consectur adip
-                        sed eiusmod amet consectur adip sed eiusmod tempor.
-                    </p>
-                    <p class="text-dark"><i class=" fa fa-check text-primary me-2"></i> We are friendly to each other.</p>
-                    <p class="text-dark"><i class=" fa fa-check text-primary me-2"></i> If you join with us,We will give
-                        you free training.</p>
-                    <p class="text-dark"><i class=" fa fa-check text-primary me-2"></i> Its an opportunity to help poor
-                        Environments.</p>
-                    <p class="text-dark"><i class=" fa fa-check text-primary me-2"></i> No goal requirements.</p>
-                    <p class="text-dark mb-5"><i class=" fa fa-check text-primary me-2"></i> Joining is tottaly free. We
-                        dont need any money from you.</p>
-                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="https://vaishvikwelfare.org/user/register">Join With Us</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Volunteers End -->
+
 
 @section('styles')
 <style>

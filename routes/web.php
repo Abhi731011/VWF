@@ -17,12 +17,16 @@ use App\Http\Controllers\Admin\CertificateRequestController;
 use App\Http\Controllers\Admin\CertificateDesignController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Admin\SupportFeedbackController;
+use App\Http\Controllers\landing\FooterController;
 
  
 // Route::get('/', function () {
 //     return view('landing.main');
 // })->name('index');
 Route::get('/', [LandingController::class, 'index'])->name('index');
+
+// Footer data routes
+Route::get('/api/footer-data', [FooterController::class, 'getFooterData'])->name('footer.data');
  
  
 // Landing page routes
