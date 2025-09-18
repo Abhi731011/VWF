@@ -27,7 +27,6 @@ class CertificateRequest extends Model
         'approved_by',
         'rejected_by',
         'certificate_path',
-        'certificate_design_id',
     ];
 
     protected $casts = [
@@ -61,13 +60,6 @@ class CertificateRequest extends Model
         return $this->belongsTo(User::class, 'rejected_by');
     }
 
-    /**
-     * Get the certificate design used for this request.
-     */
-    public function certificateDesign(): BelongsTo
-    {
-        return $this->belongsTo(CertificateDesign::class);
-    }
 
     /**
      * Generate a unique certificate ID.

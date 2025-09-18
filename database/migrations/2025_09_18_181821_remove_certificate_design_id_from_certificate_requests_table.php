@@ -12,9 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('certificate_requests', function (Blueprint $table) {
-            if (!Schema::hasColumn('certificate_requests', 'certificate_id')) {
-                $table->string('certificate_id')->unique()->nullable()->after('id');
-            }
+            $table->dropColumn('certificate_design_id');
         });
     }
 
@@ -24,7 +22,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('certificate_requests', function (Blueprint $table) {
-            $table->dropColumn('certificate_id');
+            $table->unsignedBigInteger('certificate_design_id')->nullable()->after('certificate_path');
+            $table->foreign('certificate_design_id')->references('id')->on('certificate_designs')->onDelete('set null');
         });
     }
 };

@@ -71,6 +71,14 @@
                                         <label><strong>Request Date:</strong></label>
                                         <p>{{ $certificateRequest->created_at->format('M d, Y H:i A') }}</p>
                                     </div>
+                                    @if($certificateRequest->user)
+                                    <div class="form-group">
+                                        <label><strong>User Since:</strong></label>
+                                        <p>{{ $certificateRequest->user->created_at->format('M d, Y') }} 
+                                           <small class="text-muted">({{ $certificateRequest->user->created_at->diffForHumans() }})</small>
+                                        </p>
+                                    </div>
+                                    @endif
                                 </div>
                             </div>
 
@@ -90,25 +98,75 @@
                             </div>
                             @endif
 
-                            @if($certificateRequest->status == 'approved')
-                            <div class="alert alert-success">
-                                <h6><strong>Approval Details:</strong></h6>
-                                <p><strong>Approved by:</strong> {{ $certificateRequest->approvedBy->name ?? 'N/A' }}</p>
-                                <p><strong>Approved on:</strong> {{ $certificateRequest->approved_at->format('M d, Y H:i A') }}</p>
-                                @if($certificateRequest->certificate_path)
-                                <p><strong>Certificate:</strong> <a href="{{ asset($certificateRequest->certificate_path) }}" target="_blank" class="btn btn-sm btn-success">View Certificate</a></p>
-                                @endif
+                            {{-- Always show approval details section in card format --}}
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">
+                                        <i class="fas fa-info-circle"></i> Approval Details
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    @if($certificateRequest->status == 'approved')
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label><strong>Approved by:</strong></label>
+                                                    <p>{{ $certificateRequest->approvedBy->name ?? 'N/A' }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label><strong>Approved on:</strong></label>
+                                                    <p>{{ $certificateRequest->approved_at->format('M d, Y H:i A') }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @if($certificateRequest->certificate_path)
+                                        <div class="form-group">
+                                            <label><strong>Certificate:</strong></label>
+                                            <p><a href="{{ asset($certificateRequest->certificate_path) }}" target="_blank" class="btn btn-success">
+                                                <i class="fas fa-file-pdf"></i> View Certificate
+                                            </a></p>
+                                        </div>
+                                        @endif
+                                    @elseif($certificateRequest->status == 'rejected')
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label><strong>Rejected by:</strong></label>
+                                                    <p>{{ $certificateRequest->rejectedBy->name ?? 'N/A' }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label><strong>Rejected on:</strong></label>
+                                                    <p>{{ $certificateRequest->rejected_at->format('M d, Y H:i A') }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label><strong>Rejection Reason:</strong></label>
+                                            <p>{{ $certificateRequest->rejection_reason }}</p>
+                                        </div>
+                                    @else
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label><strong>Status:</strong></label>
+                                                    <p><span class="badge badge-warning">Pending Review</span></p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label><strong>Certificate:</strong></label>
+                                                    <p><span class="text-muted">Not yet uploaded</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                </div>
                             </div>
-                            @endif
 
-                            @if($certificateRequest->status == 'rejected')
-                            <div class="alert alert-danger">
-                                <h6><strong>Rejection Details:</strong></h6>
-                                <p><strong>Rejected by:</strong> {{ $certificateRequest->rejectedBy->name ?? 'N/A' }}</p>
-                                <p><strong>Rejected on:</strong> {{ $certificateRequest->rejected_at->format('M d, Y H:i A') }}</p>
-                                <p><strong>Reason:</strong> {{ $certificateRequest->rejection_reason }}</p>
-                            </div>
-                            @endif
                         </div>
                     </div>
                 </div>
@@ -122,21 +180,9 @@
                             <h4>Approve Request</h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('admin.certificates.approve', $certificateRequest) }}" method="POST">
-                                @csrf
-                                <div class="form-group">
-                                    <label for="certificate_design_id">Select Certificate Design</label>
-                                    <select class="form-control" name="certificate_design_id" required>
-                                        <option value="">Choose a design</option>
-                                        @foreach($certificateDesigns as $design)
-                                        <option value="{{ $design->id }}">{{ $design->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <button type="submit" class="btn btn-success btn-block">
-                                    <i class="fas fa-check"></i> Approve & Send Certificate
-                                </button>
-                            </form>
+                            <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#approveModal">
+                                <i class="fas fa-check"></i> Approve & Upload Certificate
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -163,5 +209,38 @@
             @endif
         </div>
     </section>
+</div>
+
+<!-- Approve Modal -->
+<div class="modal fade" id="approveModal" tabindex="-1" role="dialog" aria-labelledby="approveModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="approveModalLabel">Upload Certificate PDF</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ route('admin.certificates.approve', $certificateRequest) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="certificate_file">Select Certificate PDF File</label>
+                        <input type="file" class="form-control" name="certificate_file" id="certificate_file" accept=".pdf" required>
+                        <small class="form-text text-muted">Please upload a pre-designed certificate PDF file (max 10MB)</small>
+                    </div>
+                    <div class="alert alert-info">
+                        <strong>Note:</strong> Upload a pre-designed certificate PDF file. The system will save it and send it to the user via email.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-upload"></i> Upload & Send Certificate
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 @endsection

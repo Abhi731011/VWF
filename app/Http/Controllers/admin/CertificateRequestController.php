@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\CertificateRequest;
-use App\Models\CertificateDesign;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -18,7 +17,7 @@ class CertificateRequestController extends Controller
      */
     public function index(Request $request)
     {
-        $query = CertificateRequest::with(['user', 'approvedBy', 'rejectedBy', 'certificateDesign']);
+        $query = CertificateRequest::with(['user', 'approvedBy', 'rejectedBy']);
 
         // Apply filters
         if ($request->filled('status')) {
@@ -43,10 +42,9 @@ class CertificateRequestController extends Controller
      */
     public function show(CertificateRequest $certificateRequest)
     {
-        $certificateRequest->load(['user', 'approvedBy', 'rejectedBy', 'certificateDesign']);
-        $certificateDesigns = CertificateDesign::active()->get();
+        $certificateRequest->load(['user', 'approvedBy', 'rejectedBy']);
         
-        return view('admin.certificates.show', compact('certificateRequest', 'certificateDesigns'));
+        return view('admin.certificates.show', compact('certificateRequest'));
     }
 
     /**
@@ -55,33 +53,47 @@ class CertificateRequestController extends Controller
     public function approve(Request $request, CertificateRequest $certificateRequest)
     {
         $request->validate([
-            'certificate_design_id' => 'required|exists:certificate_designs,id',
+            'certificate_file' => 'required|file|mimes:pdf|max:10240', // 10MB max
         ]);
 
-        $certificateDesign = CertificateDesign::findOrFail($request->certificate_design_id);
-        
         // Generate certificate ID if not exists
         if (empty($certificateRequest->certificate_id)) {
             $certificateRequest->certificate_id = CertificateRequest::generateCertificateId();
         }
         
-        // Generate certificate PDF
-        $certificatePath = $this->generateCertificatePDF($certificateRequest, $certificateDesign);
-        
-        // Update certificate request
-        $certificateRequest->update([
-            'status' => 'approved',
-            'approved_at' => now(),
-            'approved_by' => auth()->id(),
-            'certificate_path' => $certificatePath,
-            'certificate_design_id' => $certificateDesign->id,
-        ]);
+        // Handle PDF upload
+        if ($request->hasFile('certificate_file')) {
+            $file = $request->file('certificate_file');
+            
+            // Create certificates directory in public folder if it doesn't exist
+            $publicPath = public_path('certificates');
+            if (!file_exists($publicPath)) {
+                mkdir($publicPath, 0755, true);
+            }
+            
+            // Generate unique filename
+            $filename = 'certificate_' . $certificateRequest->certificate_id . '_' . time() . '.pdf';
+            $filePath = $publicPath . '/' . $filename;
+            
+            // Move uploaded file to public folder
+            $file->move($publicPath, $filename);
+            
+            // Update certificate request
+            $certificateRequest->update([
+                'status' => 'approved',
+                'approved_at' => now(),
+                'approved_by' => auth()->id(),
+                'certificate_path' => 'certificates/' . $filename,
+            ]);
 
-        // Send approval email with certificate
-        $this->sendApprovalEmail($certificateRequest);
+            // Send approval email with certificate
+            $this->sendApprovalEmail($certificateRequest);
 
-        return redirect()->route('admin.certificates.show', $certificateRequest)
-            ->with('success', 'Certificate request approved successfully and certificate sent via email.');
+            return redirect()->route('admin.certificates.show', $certificateRequest)
+                ->with('success', 'Certificate request approved successfully and certificate sent via email.');
+        }
+
+        return redirect()->back()->with('error', 'Failed to upload certificate file.');
     }
 
     /**
@@ -107,43 +119,6 @@ class CertificateRequestController extends Controller
             ->with('success', 'Certificate request rejected and notification sent via email.');
     }
 
-    /**
-     * Generate certificate PDF.
-     */
-    private function generateCertificatePDF(CertificateRequest $certificateRequest, CertificateDesign $design)
-    {
-        $user = $certificateRequest->user;
-        $daysTogether = (int) $user->created_at->diffInDays(now());
-        
-        // Create certificate HTML
-        $html = $this->generateCertificateHTML($certificateRequest, $design, $daysTogether);
-        
-        // Create certificates directory in public folder if it doesn't exist
-        $publicPath = public_path('certificates');
-        if (!file_exists($publicPath)) {
-            mkdir($publicPath, 0755, true);
-        }
-        
-        // Store certificate in public folder
-        $filename = 'certificate_' . $certificateRequest->certificate_id . '_' . time() . '.html';
-        $filePath = $publicPath . '/' . $filename;
-        
-        file_put_contents($filePath, $html);
-        
-        // Return relative path for database storage
-        return 'certificates/' . $filename;
-    }
-
-    /**
-     * Generate certificate HTML.
-     */
-    private function generateCertificateHTML(CertificateRequest $certificateRequest, CertificateDesign $design, $daysTogether)
-    {
-        $userImageUrl = 'http://localhost/ngo-user/public/uploads/certificates/' . ($certificateRequest->image_path ?? 'user.png');
-        $logoUrl = $design->organization_logo ? asset('storage/' . $design->organization_logo) : asset('assets/img/Logowithname.png');
-        
-        return view('admin.certificates.certificate-template', compact('certificateRequest', 'design', 'daysTogether', 'userImageUrl', 'logoUrl'))->render();
-    }
 
     /**
      * Send approval email with certificate.
@@ -159,6 +134,14 @@ class CertificateRequestController extends Controller
         Mail::send('emails.certificate-approved', $data, function ($message) use ($certificateRequest) {
             $message->to($certificateRequest->email, $certificateRequest->full_name)
                     ->subject('Certificate of Appreciation - Approved');
+            
+            // Attach the certificate PDF if it exists
+            if ($certificateRequest->certificate_path && file_exists(public_path($certificateRequest->certificate_path))) {
+                $message->attach(public_path($certificateRequest->certificate_path), [
+                    'as' => 'Certificate_of_Appreciation.pdf',
+                    'mime' => 'application/pdf',
+                ]);
+            }
         });
     }
 

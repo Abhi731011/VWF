@@ -36,7 +36,7 @@
         <ul class="sidebar-menu">
             <li class="menu-header">Main</li>
             <li class="dropdown active">
-                <a href="#" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
+                <a href="{{ route('admin.dashboard') }}" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
             <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="briefcase"></i><span>Contact Us</span></a>
@@ -79,14 +79,12 @@
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="award"></i><span>Certificates</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('admin.certificates.index') }}">Certificate Requests</a></li>
-                    <li><a class="nav-link" href="{{ route('admin.certificate-designs.index') }}">Certificate Designs</a></li>
-                    <li><a class="nav-link" href="{{ route('admin.certificate-designs.create') }}">Create Design</a></li>
                 </ul>
             </li>
             <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="image"></i><span>Gallery</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="{{ route('galleries.create') }}">Add Gallery</a></li>
+                    <!-- <li><a class="nav-link" href="{{ route('galleries.create') }}">Add Gallery</a></li> -->
                     <li><a class="nav-link" href="{{ route('galleries.index') }}">Manage Gallery</a></li>
                 </ul>
             </li>
