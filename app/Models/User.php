@@ -73,4 +73,20 @@ class User extends Authenticatable
     {
         return $this->email === 'admin@gmail.com';
     }
+
+    /**
+     * Get the donations made by the user.
+     */
+    public function donations()
+    {
+        return $this->hasMany(Donation::class);
+    }
+
+    /**
+     * Get the package purchases made by the user.
+     */
+    public function packagePurchases()
+    {
+        return $this->hasMany(PackagePurchase::class);
+    }
 }

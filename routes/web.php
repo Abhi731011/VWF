@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\EventRegistrationController;
 use App\Http\Controllers\Admin\CertificateRequestController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Admin\SupportFeedbackController;
+use App\Http\Controllers\Admin\DonationController;
 use App\Http\Controllers\landing\FooterController;
 
  
@@ -174,6 +175,14 @@ Route::post('/admin/certificate-requests/{certificateRequest}/approve', [Certifi
 Route::post('/admin/certificate-requests/{certificateRequest}/reject', [CertificateRequestController::class, 'reject'])->name('admin.certificates.reject');
 
 // Admin Certificate Design Management Routes
+
+// Admin Donation Management Routes
+Route::get('/admin/donations', [DonationController::class, 'index'])->name('admin.donations.index');
+Route::get('/admin/donations/user-packages', [DonationController::class, 'userPackages'])->name('admin.donations.user-packages');
+Route::get('/admin/donations/project-donations', [DonationController::class, 'projectDonations'])->name('admin.donations.project-donations');
+Route::get('/admin/donations/package-purchase/{packagePurchase}', [DonationController::class, 'showPackagePurchase'])->name('admin.donations.show-package-purchase');
+Route::get('/admin/donations/donation/{donation}', [DonationController::class, 'showDonation'])->name('admin.donations.show-donation');
+Route::get('/admin/donations/stats', [DonationController::class, 'getStats'])->name('admin.donations.stats');
 
 });
 require __DIR__.'/auth.php';

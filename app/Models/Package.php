@@ -35,4 +35,12 @@ class Package extends Model
         'duration_value' => 'integer',
         'sort_order' => 'integer',
     ];
+
+    /**
+     * Get the package purchases for this package.
+     */
+    public function packagePurchases()
+    {
+        return $this->hasMany(PackagePurchase::class);
+    }
 }

@@ -53,6 +53,11 @@ class Project extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function donations()
+    {
+        return $this->hasMany(Donation::class);
+    }
+
     /**
      * Get the route key for the model.
      *

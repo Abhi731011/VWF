@@ -76,6 +76,14 @@
                 </ul>
             </li>
             <li class="dropdown">
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="heart"></i><span>Donations</span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="{{ route('admin.donations.index') }}">Overview</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.donations.user-packages') }}">User Packages</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.donations.project-donations') }}">Project Donations</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="award"></i><span>Certificates</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('admin.certificates.index') }}">Certificate Requests</a></li>
