@@ -46,10 +46,12 @@ Route::get('/causes', [CausesController::class, 'index'])->name('causes');
 // Public causes show route
 Route::get('/causes/{project}', [CausesController::class, 'show'])->name('landing.causes.show');
  
-Route::get('/landing-events', [LandingController::class, 'events'])->name('eventslanding');
+Route::get('/landing-events', [LandingController::class, 'events'])->name('events.landing');
+// Route::get('/landing-events', [LandingController::class, 'events'])->name('events.landing.index');
+
  
 // Public event show route
-Route::get('/landing-events/{event}', [LandingController::class, 'showEvent'])->name('landing.events.show');
+Route::get('/landing-events/{event}', [LandingController::class, 'showEvent'])->name('events.landing.show');
 
 // Public gallery route
 Route::get('/gallery-landing', [LandingController::class, 'gallery'])->name('gallerylanding');
@@ -183,6 +185,12 @@ Route::get('/admin/donations/project-donations', [DonationController::class, 'pr
 Route::get('/admin/donations/package-purchase/{packagePurchase}', [DonationController::class, 'showPackagePurchase'])->name('admin.donations.show-package-purchase');
 Route::get('/admin/donations/donation/{donation}', [DonationController::class, 'showDonation'])->name('admin.donations.show-donation');
 Route::get('/admin/donations/stats', [DonationController::class, 'getStats'])->name('admin.donations.stats');
+
+// Landing Donations Routes
+Route::get('/admin/landing-donations', [App\Http\Controllers\Admin\LandingDonationController::class, 'index'])->name('admin.landing-donations.index');
+Route::get('/admin/landing-donations/{landingDonation}', [App\Http\Controllers\Admin\LandingDonationController::class, 'show'])->name('admin.landing-donations.show');
+Route::delete('/admin/landing-donations/{landingDonation}', [App\Http\Controllers\Admin\LandingDonationController::class, 'destroy'])->name('admin.landing-donations.destroy');
+Route::get('/admin/landing-donations-export', [App\Http\Controllers\Admin\LandingDonationController::class, 'export'])->name('admin.landing-donations.export');
 
 });
 require __DIR__.'/auth.php';

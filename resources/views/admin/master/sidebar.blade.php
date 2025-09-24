@@ -81,6 +81,7 @@
                     <li><a class="nav-link" href="{{ route('admin.donations.index') }}">Overview</a></li>
                     <li><a class="nav-link" href="{{ route('admin.donations.user-packages') }}">User Packages</a></li>
                     <li><a class="nav-link" href="{{ route('admin.donations.project-donations') }}">Project Donations</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.landing-donations.index') }}">Landing Donations</a></li>
                 </ul>
             </li>
             <li class="dropdown">

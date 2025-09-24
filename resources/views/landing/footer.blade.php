@@ -37,16 +37,16 @@
                     <h4 class="mb-4 text-white">Events</h4>
                     @if(isset($footerData['ongoing_events']) && $footerData['ongoing_events']->count() > 0)
                         @foreach($footerData['ongoing_events'] as $event)
-                            <a href="{{ route('landing.events.show', $event->slug) }}" class="text-truncate mb-2" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                            <a href="{{ route('events.landing.show', $event->slug) }}" class="text-truncate mb-2" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                                 <i class="fas fa-calendar-alt me-2"></i> {{ $event->title }}
                             </a>
                         @endforeach
                     @else
-                        <a href="{{ route('landing.events') }}" class="text-truncate mb-2" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><i class="fas fa-calendar-alt me-2"></i> Global Youth Leadership Summit</a>
-                        <a href="{{ route('landing.events') }}" class="text-truncate mb-2" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><i class="fas fa-calendar-alt me-2"></i> Environmental Awareness Campaign</a>
-                        <a href="{{ route('landing.events') }}" class="text-truncate mb-2" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><i class="fas fa-calendar-alt me-2"></i> Health Check-up Drive</a>
-                        <a href="{{ route('landing.events') }}" class="text-truncate mb-2" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><i class="fas fa-calendar-alt me-2"></i> Education Workshop</a>
-                        <a href="{{ route('landing.events') }}" class="text-truncate mb-2" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><i class="fas fa-calendar-alt me-2"></i> Community Development Program</a>
+                        <a href="{{ route('events.landing') }}" class="text-truncate mb-2" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><i class="fas fa-calendar-alt me-2"></i> Global Youth Leadership Summit</a>
+                        <a href="{{ route('events.landing') }}" class="text-truncate mb-2" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><i class="fas fa-calendar-alt me-2"></i> Environmental Awareness Campaign</a>
+                        <a href="{{ route('events.landing') }}" class="text-truncate mb-2" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><i class="fas fa-calendar-alt me-2"></i> Health Check-up Drive</a>
+                        <a href="{{ route('events.landing') }}" class="text-truncate mb-2" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><i class="fas fa-calendar-alt me-2"></i> Education Workshop</a>
+                        <a href="{{ route('events.landing') }}" class="text-truncate mb-2" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><i class="fas fa-calendar-alt me-2"></i> Community Development Program</a>
                     @endif
                 </div>
             </div>

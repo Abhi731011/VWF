@@ -127,6 +127,7 @@ class CertificateRequestController extends Controller
     {
         $data = [
             'name' => $certificateRequest->full_name,
+            'request_id' => $certificateRequest->request_id,
             'certificate_path' => $certificateRequest->certificate_path,
             'certificate_id' => $certificateRequest->certificate_id,
         ];

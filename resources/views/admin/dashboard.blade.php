@@ -602,6 +602,13 @@
                                 </a>
                             </div>
                             <div class="col-md-3 mb-3">
+                                <a href="{{ route('admin.landing-donations.index') }}" class="btn btn-secondary btn-block">
+                                    <i class="fas fa-globe"></i> Landing Donations
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
                                 <a href="{{ route('admin.certificates.index') }}" class="btn btn-info btn-block">
                                     <i class="fas fa-certificate"></i> Certificates
                                 </a>

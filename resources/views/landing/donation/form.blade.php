@@ -73,9 +73,15 @@
                                 </div>
                             </div>
 
-                            <div class="mb-4">
+                            <div class="mb-3">
                                 <label for="message" class="form-label">Message (Optional)</label>
                                 <textarea class="form-control" id="message" name="message" rows="3" placeholder="Leave a message with your donation..."></textarea>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="referral_volunteer_id" class="form-label">Referral Volunteer ID (Optional)</label>
+                                <input type="text" class="form-control" id="referral_volunteer_id" name="referral_volunteer_id" placeholder="Enter volunteer ID if referred by someone...">
+                                <small class="form-text text-muted">If you were referred by a volunteer, please enter their ID here.</small>
                             </div>
 
                             <div class="text-center">

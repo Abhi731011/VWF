@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class CertificateRequest extends Model
 {
     protected $fillable = [
+        'request_id',
         'certificate_id',
         'user_id',
         'full_name',
@@ -62,6 +63,18 @@ class CertificateRequest extends Model
 
 
     /**
+     * Generate a unique request ID.
+     */
+    public static function generateRequestId(): string
+    {
+        do {
+            $requestId = 'REQ-' . date('Y') . '-' . strtoupper(substr(md5(uniqid()), 0, 8));
+        } while (self::where('request_id', $requestId)->exists());
+
+        return $requestId;
+    }
+
+    /**
      * Generate a unique certificate ID.
      */
     public static function generateCertificateId(): string
@@ -74,13 +87,16 @@ class CertificateRequest extends Model
     }
 
     /**
-     * Boot method to auto-generate certificate ID.
+     * Boot method to auto-generate request ID and certificate ID.
      */
     protected static function boot()
     {
         parent::boot();
 
         static::creating(function ($certificateRequest) {
+            if (empty($certificateRequest->request_id)) {
+                $certificateRequest->request_id = self::generateRequestId();
+            }
             if (empty($certificateRequest->certificate_id)) {
                 $certificateRequest->certificate_id = self::generateCertificateId();
             }

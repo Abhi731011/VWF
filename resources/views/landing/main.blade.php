@@ -464,7 +464,7 @@ $baseurl = asset('projects');
                                 <p class="card-text text-muted">We are working on bringing you exciting events. Stay tuned for updates!</p>
                             </div>
                             <div class="card-footer bg-transparent border-0 p-4">
-                                <a class="btn btn-primary w-100" href="{{ route('eventslanding') }}">View All Events</a>
+                                <a class="btn btn-primary w-100" href="{{ route('events.landing') }}">View All Events</a>
                             </div>
                         </div>
                     </div>
@@ -528,7 +528,7 @@ $baseurl = asset('projects');
                                     @if($event->slug)
                                 <a class="btn-hover-bg  btn-primary text-white py-2 px-4 w-300" href="{{ route('landing.causes.show', $project->slug) }}">Read More</a>
                                                            @else
-                                        <a class="btn btn-primary w-100" href="{{ route('eventslanding') }}">View Events</a>
+                                        <a class="btn btn-primary w-100" href="{{ route('events.landing') }}">View Events</a>
                                     @endif
                                 </div>
                             </div>
@@ -541,7 +541,7 @@ $baseurl = asset('projects');
             
             <div class="col-12">
                     <div class="d-flex align-items-center justify-content-center">
-                        <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="{{ route('eventslanding') }}">View All</a>
+                        <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="{{ route('events.landing') }}">View All</a>
                     </div>
                 </div>
         </div>

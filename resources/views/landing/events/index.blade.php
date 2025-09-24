@@ -97,7 +97,7 @@
                                         </p>
                                     </div>
                                     <div class="card-footer bg-transparent border-0 p-4">
-                                    <a class="btn btn-primary w-100" href="{{ route('landing.events.show', $event->slug) }}">Read More</a>
+                                    <a class="btn btn-primary w-100" href="{{ route('events.landing.show', $event->slug) }}">Read More</a>
                                     </div>
                                 </div>
                             </div>

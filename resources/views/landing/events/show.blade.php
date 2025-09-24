@@ -190,7 +190,7 @@
                         <!-- Action Buttons -->
                         <div class="d-grid gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-primary btn-lg">Contact Us</a>
-                            <a href="{{ route('eventslanding') }}" class="btn btn-outline-primary btn-lg">Back to Events</a>
+                            <a href="{{ route('events.landing') }}" class="btn btn-outline-primary btn-lg">Back to Events</a>
                         </div>
                     </div>
                 </div>

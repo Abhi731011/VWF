@@ -133,6 +133,7 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
+                                            <th>Request ID</th>
                                             <th>Certificate ID</th>
                                             <th>Name</th>
                                             <th>Email</th>
@@ -146,6 +147,13 @@
                                         @forelse($certificateRequests as $request)
                                         <tr>
                                             <td>{{ $request->id }}</td>
+                                            <td>
+                                                @if($request->request_id)
+                                                    <span class="badge badge-primary">{{ $request->request_id }}</span>
+                                                @else
+                                                    <span class="text-muted">Not Generated</span>
+                                                @endif
+                                            </td>
                                             <td>
                                                 @if($request->certificate_id)
                                                     <span class="badge badge-light">{{ $request->certificate_id }}</span>
@@ -174,7 +182,7 @@
                                         </tr>
                                         @empty
                                         <tr>
-                                            <td colspan="8" class="text-center">No certificate requests found.</td>
+                                            <td colspan="9" class="text-center">No certificate requests found.</td>
                                         </tr>
                                         @endforelse
                                     </tbody>
@@ -315,6 +323,11 @@
         background-color: #f8f9fa;
         color: #495057;
         border: 1px solid #dee2e6;
+    }
+    
+    .badge-primary {
+        background-color: #007bff;
+        color: #ffffff;
     }
 </style>
 @endsection

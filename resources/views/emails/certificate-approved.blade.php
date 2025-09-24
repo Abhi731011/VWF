@@ -55,6 +55,7 @@
         
         <p>Your certificate of appreciation has been generated and is ready for download. This certificate recognizes your valuable contributions to our community and your commitment to making a positive impact.</p>
         
+        <p><strong>Request ID:</strong> {{ $request_id ?? 'N/A' }}</p>
         <p><strong>Certificate ID:</strong> {{ $certificate_id ?? 'N/A' }}</p>
         
         <p>You can view and download your certificate by clicking the button below:</p>

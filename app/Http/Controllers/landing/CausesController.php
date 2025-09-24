@@ -12,7 +12,6 @@ class CausesController extends Controller
     {
         $projects = Project::with('category')
         ->where('status', 'published')
-        ->where('is_featured', true)
         ->where('visibility', true)
         ->get();
         return view('landing.causes.index', compact('projects'));

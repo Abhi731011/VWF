@@ -34,6 +34,10 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        <label><strong>Request ID:</strong></label>
+                                        <p><span class="badge badge-primary">{{ $certificateRequest->request_id ?? 'Not Generated' }}</span></p>
+                                    </div>
+                                    <div class="form-group">
                                         <label><strong>Certificate ID:</strong></label>
                                         <p><span class="badge badge-info">{{ $certificateRequest->certificate_id ?? 'Not Generated' }}</span></p>
                                     </div>

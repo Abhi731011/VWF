@@ -67,8 +67,10 @@ class LandingController extends Controller
   public function causes()
     {
         $projects = Project::with('category')
-            ->where('status', 'published')
-            ->get();
+        ->where('status', 'published')
+        ->where('visibility', true)
+        
+        ->get();
         return view('landing.causes.index', compact('projects'));
     }
     public function events()
@@ -89,7 +91,7 @@ class LandingController extends Controller
         // Add some debugging
         \Log::info('Event found: ' . $event->title . ' with slug: ' . $event->slug);
         
-        return view('landing.events.show', compact('event'));
+        return view('events.landing.show', compact('event'));
     }
 
     public function gallery()

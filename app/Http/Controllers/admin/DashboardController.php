@@ -15,6 +15,7 @@ use App\Models\CertificateRequest;
 use App\Models\SupportFeedback;
 use App\Models\Category;
 use App\Models\Donation;
+use App\Models\LandingDonation;
 use App\Models\PackagePurchase;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -68,6 +69,8 @@ class DashboardController extends Controller
             'total_feedback' => SupportFeedback::count(),
             'total_donations' => Donation::count(),
             'total_donation_amount' => Donation::sum('amount'),
+            'total_landing_donations' => LandingDonation::count(),
+            'total_landing_donation_amount' => LandingDonation::sum('amount'),
             'total_package_purchases' => PackagePurchase::count(),
             'total_package_amount' => PackagePurchase::sum('amount'),
 
@@ -81,6 +84,8 @@ class DashboardController extends Controller
             'feedback_this_period' => SupportFeedback::whereBetween('created_at', [$startDate, $endDate])->count(),
             'donations_this_period' => Donation::whereBetween('created_at', [$startDate, $endDate])->count(),
             'donation_amount_this_period' => Donation::whereBetween('created_at', [$startDate, $endDate])->sum('amount'),
+            'landing_donations_this_period' => LandingDonation::whereBetween('created_at', [$startDate, $endDate])->count(),
+            'landing_donation_amount_this_period' => LandingDonation::whereBetween('created_at', [$startDate, $endDate])->sum('amount'),
             'purchases_this_period' => PackagePurchase::whereBetween('created_at', [$startDate, $endDate])->count(),
             'package_amount_this_period' => PackagePurchase::whereBetween('created_at', [$startDate, $endDate])->sum('amount'),
 
@@ -96,6 +101,8 @@ class DashboardController extends Controller
             'open_feedback' => SupportFeedback::where('status', 'open')->count(),
             'completed_donations' => Donation::where('status', 'completed')->count(),
             'pending_donations' => Donation::where('status', 'pending')->count(),
+            'completed_landing_donations' => LandingDonation::where('status', 'completed')->count(),
+            'pending_landing_donations' => LandingDonation::where('status', 'pending')->count(),
             'completed_purchases' => PackagePurchase::where('status', 'completed')->count(),
             'pending_purchases' => PackagePurchase::where('status', 'pending')->count(),
 
